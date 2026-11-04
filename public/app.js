@@ -597,8 +597,18 @@ function initSpeechRecognition() {
       // Normal pause during speech, watchdog will keep active
       return;
     }
+    if (event.error === 'audio-capture' || event.error === 'not-allowed' || event.error === 'service-not-allowed') {
+      const statusPill = document.getElementById('unifiedStatusPill');
+      if (statusPill) {
+        statusPill.innerHTML = '<span class="w-2 h-2 rounded-full bg-amber-400"></span> <span class="text-amber-400 font-semibold">🎙️ កំពុងថតសម្លេង (នឹងបម្លែងជាអក្សរតាម AI ពេលចុច «បញ្ឈប់»)</span>';
+      }
+      return;
+    }
     if (event.error === 'language-not-supported') {
-      showToast('Microsoft Edge មិនគាំទ្រភាសាខ្មែរទេ។ សូមបើកកម្មវិធី Google Chrome ដើម្បីបម្លែងជាអក្សរខ្មែរផ្ទាល់!', 'error');
+      const statusPill = document.getElementById('unifiedStatusPill');
+      if (statusPill) {
+        statusPill.innerHTML = '<span class="w-2 h-2 rounded-full bg-amber-400"></span> <span class="text-amber-400 font-semibold">🎙️ ឧបករណ៍មិនគាំទ្រ STT ផ្ទាល់ (នឹងបម្លែងតាម AI ពេលចុច «បញ្ឈប់»)</span>';
+      }
     }
   };
 
@@ -822,6 +832,54 @@ async function refineUnifiedTextWithAI(isSilent = false) {
   }
 }
 
+async function transcribeLatestRecording(recId) {
+  const box = document.getElementById('unifiedTextBox');
+  let targetId = recId;
+  if (!targetId) {
+    if (allRecordings && allRecordings.length > 0) {
+      targetId = allRecordings[0].id;
+    }
+  }
+  if (!targetId) {
+    showToast('មិនទាន់មានការថតសម្លេងណាមួយនៅឡើយទេ', 'info');
+    return;
+  }
+
+  const btn = document.getElementById('btnAiTranscribe');
+  if (btn) btn.disabled = true;
+  showToast('កំពុងបម្លែងសម្លេងជាអក្សរតាម AI (Gemini)...', 'info', 5000);
+  try {
+    const effectiveKey = appConfig.geminiApiKey || localStorage.getItem('voice_gemini_key') || '';
+    const transResp = await fetch('/api/ai/transcribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ recordingId: targetId, apiKey: effectiveKey })
+    });
+    const transData = await transResp.json();
+    if (transData.success && transData.transcript) {
+      if (box) {
+        box.value = transData.transcript;
+        updateBoxCounts();
+      }
+      showToast('បានបម្លែងជាអក្សរខ្មែរជោគជ័យ!', 'success');
+      if (document.getElementById('chkAutoMinutes')?.checked) {
+        const minEl = document.getElementById('minContent');
+        if (minEl) minEl.value = transData.transcript;
+        updateMinutesPreview();
+        updateInvitationPreview();
+        updateRoutingPreview();
+      }
+      await loadRecordings();
+    } else {
+      showToast(transData.error || 'បរាជ័យក្នុងការបម្លែងសម្លេង', 'error');
+    }
+  } catch (err) {
+    showToast('កំហុស៖ ' + err.message, 'error');
+  } finally {
+    if (btn) btn.disabled = false;
+  }
+}
+
 // --------------------------------------------------------------------------
 // 4. SAVE RECORDING TO SERVER
 // --------------------------------------------------------------------------
@@ -861,29 +919,42 @@ async function saveRecordingToServer() {
     if (result.success && result.recording) {
       showToast('បានរក្សាទុកការថតសម្លេងជោគជ័យ!', 'success');
       
-      // If transcript was empty on PC, and Gemini key exists, transcribe it
-      if (!transcriptText && appConfig.geminiApiKey) {
-        showToast('កំពុងបម្លែងសម្លេងតាម Gemini AI...', 'info');
+      // Auto transcribe with Gemini AI if transcript is empty (common on Mobile/Tablet)
+      if (!transcriptText) {
+        showToast('កំពុងបម្លែងសម្លេងជាអក្សរតាម AI (Gemini)...', 'info', 4000);
         try {
+          const effectiveKey = appConfig.geminiApiKey || localStorage.getItem('voice_gemini_key') || '';
           const transResp = await fetch('/api/ai/transcribe', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ recordingId: result.recording.id })
+            body: JSON.stringify({ recordingId: result.recording.id, apiKey: effectiveKey })
           });
           const transData = await transResp.json();
           if (transData.success && transData.transcript && box) {
             box.value = transData.transcript;
             updateBoxCounts();
             showToast('បានបម្លែងជាអក្សរខ្មែរជោគជ័យ!', 'success');
+            if (document.getElementById('chkAutoMinutes')?.checked) {
+              const minEl = document.getElementById('minContent');
+              if (minEl) minEl.value = transData.transcript;
+              updateMinutesPreview();
+              updateInvitationPreview();
+              updateRoutingPreview();
+            }
+          } else if (transData.error) {
+            console.warn('AI Transcribe info:', transData.error);
           }
-        } catch (e) {}
+        } catch (e) {
+          console.warn('AI Transcribe call failed:', e);
+        }
       }
 
-      if (document.getElementById('chkAutoMinutes').checked && transcriptText) {
-        document.getElementById('minContent').value = transcriptText;
+      if (document.getElementById('chkAutoMinutes')?.checked && transcriptText) {
+        const minEl = document.getElementById('minContent');
+        if (minEl) minEl.value = transcriptText;
         updateMinutesPreview();
-  updateInvitationPreview();
-  updateRoutingPreview();
+        updateInvitationPreview();
+        updateRoutingPreview();
       }
 
       await loadRecordings();
@@ -2644,22 +2715,34 @@ function closeShareModal() {
 async function loadConfig() {
   try {
     const resp = await fetch('/api/config');
-    appConfig = await resp.json();
-
-    if (appConfig.personalTelegramUsername) {
-      document.getElementById('cfgPersonalUsername').value = appConfig.personalTelegramUsername;
-    }
-    if (appConfig.telegramBotToken) {
-      document.getElementById('cfgTelegramToken').value = appConfig.telegramBotToken;
-    }
-    if (appConfig.telegramChatId) {
-      document.getElementById('cfgTelegramChatId').value = appConfig.telegramChatId;
-    }
-    if (appConfig.geminiApiKey) {
-      document.getElementById('cfgGeminiKey').value = appConfig.geminiApiKey;
-    }
+    appConfig = await resp.json() || {};
   } catch (err) {
-    console.error('Config load error:', err);
+    appConfig = {};
+  }
+
+  const localGeminiKey = localStorage.getItem('voice_gemini_key');
+  if (!appConfig.geminiApiKey && localGeminiKey) {
+    appConfig.geminiApiKey = localGeminiKey;
+  }
+  if (appConfig.geminiApiKey) {
+    localStorage.setItem('voice_gemini_key', appConfig.geminiApiKey);
+  }
+
+  if (appConfig.personalTelegramUsername) {
+    const el = document.getElementById('cfgPersonalUsername');
+    if (el) el.value = appConfig.personalTelegramUsername;
+  }
+  if (appConfig.telegramBotToken) {
+    const el = document.getElementById('cfgTelegramToken');
+    if (el) el.value = appConfig.telegramBotToken;
+  }
+  if (appConfig.telegramChatId) {
+    const el = document.getElementById('cfgTelegramChatId');
+    if (el) el.value = appConfig.telegramChatId;
+  }
+  if (appConfig.geminiApiKey) {
+    const el = document.getElementById('cfgGeminiKey');
+    if (el) el.value = appConfig.geminiApiKey;
   }
 }
 
@@ -2668,6 +2751,10 @@ async function saveAppSettings() {
   const token = document.getElementById('cfgTelegramToken').value.trim();
   const chatId = document.getElementById('cfgTelegramChatId').value.trim();
   const gemini = document.getElementById('cfgGeminiKey').value.trim();
+
+  if (gemini) {
+    localStorage.setItem('voice_gemini_key', gemini);
+  }
 
   const payload = {
     personalTelegramUsername: personalUsername,

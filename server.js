@@ -17,13 +17,16 @@ const { spawn } = require('child_process');
 
 const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 3000;
 let actualPort = DEFAULT_PORT;
-const DATA_DIR = path.join(__dirname, 'data');
-const UPLOADS_DIR = path.join(__dirname, 'uploads');
+const isServerless = Boolean(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME);
+const DATA_DIR = isServerless ? path.join(os.tmpdir(), 'voice-v5-data') : path.join(__dirname, 'data');
+const UPLOADS_DIR = isServerless ? path.join(os.tmpdir(), 'voice-v5-uploads') : path.join(__dirname, 'uploads');
 const PUBLIC_DIR = path.join(__dirname, 'public');
 
 // Ensure directories exist
 [DATA_DIR, UPLOADS_DIR, PUBLIC_DIR].forEach(dir => {
-  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+  try {
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+  } catch (e) {}
 });
 
 const RECORDINGS_FILE = path.join(DATA_DIR, 'recordings.json');
@@ -31,18 +34,25 @@ const CONFIG_FILE = path.join(DATA_DIR, 'config.json');
 
 // Initialize data files if not present
 if (!fs.existsSync(RECORDINGS_FILE)) {
-  fs.writeFileSync(RECORDINGS_FILE, JSON.stringify([], null, 2), 'utf8');
+  try {
+    const templateRec = path.join(__dirname, 'data', 'recordings.json');
+    const initData = fs.existsSync(templateRec) ? fs.readFileSync(templateRec, 'utf8') : JSON.stringify([], null, 2);
+    fs.writeFileSync(RECORDINGS_FILE, initData, 'utf8');
+  } catch (e) {}
 }
 if (!fs.existsSync(CONFIG_FILE)) {
-  const defaultConfig = {
-    telegramBotToken: '',
-    telegramChatId: '',
-    autoSendTelegram: false,
-    geminiApiKey: '',
-    defaultLanguage: 'km-KH',
-    targetLanguage: 'en'
-  };
-  fs.writeFileSync(CONFIG_FILE, JSON.stringify(defaultConfig, null, 2), 'utf8');
+  try {
+    const templateCfg = path.join(__dirname, 'data', 'config.json');
+    const initCfg = fs.existsSync(templateCfg) ? fs.readFileSync(templateCfg, 'utf8') : JSON.stringify({
+      telegramBotToken: '',
+      telegramChatId: '',
+      autoSendTelegram: false,
+      geminiApiKey: '',
+      defaultLanguage: 'km-KH',
+      targetLanguage: 'en'
+    }, null, 2);
+    fs.writeFileSync(CONFIG_FILE, initCfg, 'utf8');
+  } catch (e) {}
 }
 
 // Helpers & Dual-Storage Google Drive Cloud Backup
@@ -67,31 +77,46 @@ function backupFileToGDrive(subDir, filename, contentOrPath) {
 
 function getRecordings() {
   try {
-    const raw = fs.readFileSync(RECORDINGS_FILE, 'utf8');
-    return JSON.parse(raw) || [];
+    if (fs.existsSync(RECORDINGS_FILE)) {
+      const raw = fs.readFileSync(RECORDINGS_FILE, 'utf8');
+      return JSON.parse(raw) || [];
+    }
   } catch (err) {
     console.error('Error reading recordings:', err);
-    return [];
   }
+  return [];
 }
 
 function saveRecordings(list) {
-  fs.writeFileSync(RECORDINGS_FILE, JSON.stringify(list, null, 2), 'utf8');
-  backupFileToGDrive('data', 'recordings.json', JSON.stringify(list, null, 2));
-}
-
-function getConfig() {
   try {
-    const raw = fs.readFileSync(CONFIG_FILE, 'utf8');
-    return JSON.parse(raw) || {};
+    fs.writeFileSync(RECORDINGS_FILE, JSON.stringify(list, null, 2), 'utf8');
+    backupFileToGDrive('data', 'recordings.json', JSON.stringify(list, null, 2));
   } catch (err) {
-    return {};
+    console.warn('saveRecordings warning:', err.message);
   }
 }
 
+function getConfig() {
+  let cfg = {};
+  try {
+    if (fs.existsSync(CONFIG_FILE)) {
+      const raw = fs.readFileSync(CONFIG_FILE, 'utf8');
+      cfg = JSON.parse(raw) || {};
+    }
+  } catch (err) {}
+  if (!cfg.geminiApiKey && process.env.GEMINI_API_KEY) {
+    cfg.geminiApiKey = process.env.GEMINI_API_KEY;
+  }
+  return cfg;
+}
+
 function saveConfig(cfg) {
-  fs.writeFileSync(CONFIG_FILE, JSON.stringify(cfg, null, 2), 'utf8');
-  backupFileToGDrive('data', 'config.json', JSON.stringify(cfg, null, 2));
+  try {
+    fs.writeFileSync(CONFIG_FILE, JSON.stringify(cfg, null, 2), 'utf8');
+    backupFileToGDrive('data', 'config.json', JSON.stringify(cfg, null, 2));
+  } catch (err) {
+    console.warn('saveConfig warning:', err.message);
+  }
 }
 
 function getLocalIpAddresses() {
@@ -448,7 +473,7 @@ function cleanKhmerTranscriptOffline(rawText) {
 
 // Reliable Gemini API caller with automatic model fallback
 async function callGeminiApi(apiKey, method, payload) {
-  const models = ['gemini-3.5-flash', 'gemini-flash-latest'];
+  const models = ['gemini-2.5-flash', 'gemini-1.5-flash', 'gemini-flash-latest'];
   let lastError = null;
   for (const m of models) {
     try {
@@ -1305,7 +1330,7 @@ const server = http.createServer(async (req, res) => {
       const body = await readJSON(req);
       const recordingId = body.recordingId;
       const config = getConfig();
-      const apiKey = body.apiKey || config.geminiApiKey;
+      const apiKey = process.env.GEMINI_API_KEY || body.apiKey || config.geminiApiKey;
 
       if (!apiKey) {
         sendJSON(res, 400, { error: 'សូមបញ្ចូល Google Gemini API Key ក្នុងផ្ទាំងការកំណត់ ដើម្បីដំណើរការបម្លែងសម្លេងឯកសារជាអក្សរស្វ័យប្រវត្ត' });
@@ -1319,7 +1344,11 @@ const server = http.createServer(async (req, res) => {
         return;
       }
 
-      const audioFilePath = path.join(UPLOADS_DIR, rec.filename);
+      let audioFilePath = path.join(UPLOADS_DIR, rec.filename);
+      if (!fs.existsSync(audioFilePath)) {
+        const fallback = path.join(__dirname, 'uploads', rec.filename);
+        if (fs.existsSync(fallback)) audioFilePath = fallback;
+      }
       if (!fs.existsSync(audioFilePath)) {
         sendJSON(res, 404, { error: 'រកមិនឃើញ File សម្លេងលើ server' });
         return;
@@ -1368,7 +1397,7 @@ const server = http.createServer(async (req, res) => {
       const body = await readJSON(req);
       const rawText = body.text || '';
       const config = getConfig();
-      const apiKey = body.apiKey || config.geminiApiKey;
+      const apiKey = process.env.GEMINI_API_KEY || body.apiKey || config.geminiApiKey;
 
       if (!rawText.trim()) {
         sendJSON(res, 200, { success: true, refinedText: '' });
@@ -1421,7 +1450,7 @@ ${rawText}
     if (pathname === '/api/ai/test' && method === 'POST') {
       const body = await readJSON(req);
       const config = getConfig();
-      const apiKey = body.apiKey || config.geminiApiKey;
+      const apiKey = process.env.GEMINI_API_KEY || body.apiKey || config.geminiApiKey;
 
       if (!apiKey) {
         sendJSON(res, 400, { error: 'សូមបញ្ចូល Google Gemini API Key ជាមុនសិន!' });
@@ -1449,7 +1478,7 @@ ${rawText}
       const body = await readJSON(req);
       const transcript = body.transcript || '';
       const config = getConfig();
-      const apiKey = body.apiKey || config.geminiApiKey;
+      const apiKey = process.env.GEMINI_API_KEY || body.apiKey || config.geminiApiKey;
 
       if (apiKey && transcript.trim().length > 30) {
         try {
@@ -1554,6 +1583,9 @@ ${transcript}
       const ext = path.extname(originalName) || (mimeType.includes('ogg') ? '.ogg' : mimeType.includes('mp3') ? '.mp3' : '.webm');
       const id = crypto.randomUUID();
       const filename = `${id}${ext}`;
+      try {
+        if (!fs.existsSync(UPLOADS_DIR)) fs.mkdirSync(UPLOADS_DIR, { recursive: true });
+      } catch (e) {}
       const destPath = path.join(UPLOADS_DIR, filename);
 
       const writeStream = fs.createWriteStream(destPath);
