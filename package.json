@@ -1,0 +1,26 @@
+{
+  "name": "voice-v5-pro",
+  "version": "1.0.0",
+  "description": "Smart Voice Recorder with Live Translation, Telegram Integration, File Sharing & Cambodian Administrative Minutes Generator",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "voice-recorder",
+    "speech-to-text",
+    "live-translation",
+    "telegram-bot",
+    "khmer-administrative-minutes"
+  ],
+  "author": "Antigravity",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "docx": "^9.1.1",
+    "express": "^4.21.2",
+    "multer": "^1.4.5-lts.1",
+    "qrcode": "^1.5.4"
+  }
+}

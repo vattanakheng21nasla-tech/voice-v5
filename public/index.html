@@ -1,0 +1,1549 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voice-V5-Vat1anak68 | កម្មវិធីថតសម្លេងវៃឆ្លាត & កំណត់ហេតុរដ្ឋបាល</title>
+  
+  <link rel="icon" type="image/x-icon" href="/icon.ico">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Voice-V5 Pro">
+  <meta name="theme-color" content="#059669">
+
+  <!-- Khmer Fonts & Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Moul&family=Siemreap&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Local Standalone QR Code library (100% Offline, Zero CDN dependency) -->
+  <script src="/qrcode.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            khmer: ['"Kantumruy Pro"', 'sans-serif'],
+            muol: ['"Moul"', '"Khmer OS Muol Light"', 'serif'],
+            siemreap: ['"Siemreap"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+              800: '#065f46',
+              900: '#064e3b',
+            },
+            telegram: {
+              400: '#38bdf8',
+              500: '#0284c7',
+              600: '#0369a1',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Kantumruy Pro', sans-serif;
+    }
+    .font-muol {
+      font-family: 'Moul', 'Khmer OS Muol Light', serif;
+    }
+    /* Official Document Paper Styling - Exact Official Page Setup: Top: 2cm, Right: 1.5cm, Bottom: 1.5cm, Left: 3cm */
+    .a4-paper {
+      background: white;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+      width: 210mm;
+      max-width: 210mm;
+      min-height: 297mm;
+      box-sizing: border-box;
+      padding: 2.0cm 1.5cm 1.5cm 3.0cm;
+      color: #111827;
+      line-height: 1.8;
+      font-size: 14px;
+      overflow: hidden;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+    @page {
+      size: A4 portrait;
+      margin: 2.0cm 1.5cm 1.5cm 3.0cm;
+    }
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      .printable-active, .printable-active * {
+        visibility: visible;
+      }
+      .printable-active {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+    /* Pulsing recording animation */
+    @keyframes pulse-ring {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.15); opacity: 0.4; }
+      100% { transform: scale(0.95); opacity: 0.8; }
+    }
+    .recording-pulse {
+      animation: pulse-ring 2s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col antialiased" spellcheck="false">
+
+  <!-- Top Navigation Header -->
+  <header class="bg-slate-950/80 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center shadow-lg shadow-emerald-500/20 overflow-hidden">
+          <img src="/icon.png" alt="Voice-V5" class="w-7 h-7 object-contain">
+        </div>
+        <div>
+          <h1 class="text-lg font-bold text-white tracking-wide flex items-center gap-2">
+            Voice-V5 <span class="text-xs bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded-full font-mono font-bold">Vat1anak68</span>
+          </h1>
+          <p class="text-xs text-slate-400">ប្រព័ន្ធថតសម្លេងវៃឆ្លាត • Live Translation • កំណត់ហេតុរដ្ឋបាល</p>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <nav class="hidden md:flex items-center space-x-1 bg-slate-900 p-1 rounded-xl border border-slate-800">
+        <button onclick="switchTab('record')" id="tab-record" class="tab-btn px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 flex items-center gap-2 bg-emerald-600 text-white shadow-sm">
+          <i data-lucide="radio" class="w-4 h-4"></i>
+          <span>ស្ទូឌីយោថតសម្លេង</span>
+        </button>
+        <button onclick="switchTab('library')" id="tab-library" class="tab-btn px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 flex items-center gap-2 text-slate-400 hover:text-white hover:bg-slate-800">
+          <i data-lucide="folder-audio" class="w-4 h-4"></i>
+          <span>បណ្ណាល័យឯកសារ</span>
+          <span id="badge-recordings-count" class="text-xs bg-slate-800 text-slate-300 px-1.5 py-0.5 rounded-full">0</span>
+        </button>
+        <button onclick="switchTab('minutes')" id="tab-minutes" class="tab-btn px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 flex items-center gap-2 text-slate-400 hover:text-white hover:bg-slate-800">
+          <i data-lucide="file-text" class="w-4 h-4"></i>
+          <span>លិខិតរដ្ឋបាល & កំណត់ហេតុ</span>
+          <span class="text-[10px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-1.5 py-0.5 rounded-full font-bold">៣ ទម្រង់</span>
+        </button>
+        <button onclick="switchTab('settings')" id="tab-settings" class="tab-btn px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 flex items-center gap-2 text-slate-400 hover:text-white hover:bg-slate-800">
+          <i data-lucide="settings" class="w-4 h-4"></i>
+          <span>ការកំណត់</span>
+        </button>
+      </nav>
+
+      <!-- Telegram Status & Local Share Pill -->
+      <div class="flex items-center space-x-3">
+        <button onclick="testOpenPersonalTelegram()" class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-sky-500/10 hover:bg-sky-500/20 text-sky-400 border border-sky-500/30 rounded-lg text-xs font-medium transition" title="បើកកម្មវិធី Telegram">
+          <i data-lucide="send" class="w-3.5 h-3.5"></i>
+          <span>Telegram បុគ្គល</span>
+        </button>
+        <button onclick="openShareModal()" class="px-3 py-1.5 bg-emerald-950/60 hover:bg-emerald-900/60 text-emerald-300 border border-emerald-600/40 rounded-lg text-xs font-medium flex items-center gap-1.5 transition shadow-sm" title="QR Code & Link សម្រាប់ទូរស័ព្ទ">
+          <i data-lucide="globe" class="w-3.5 h-3.5 text-emerald-400"></i>
+          <span class="hidden sm:inline">QR & Link ទូរស័ព្ទ</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Tab Bar (sticky bottom on small screens) -->
+  <div class="md:hidden fixed bottom-0 left-0 right-0 bg-slate-950 border-t border-slate-800 z-50 flex justify-around p-2">
+    <button onclick="switchTab('record')" class="flex flex-col items-center py-1 text-emerald-400 text-xs">
+      <i data-lucide="radio" class="w-5 h-5"></i>
+      <span class="mt-1">ថតសម្លេង</span>
+    </button>
+    <button onclick="switchTab('library')" class="flex flex-col items-center py-1 text-slate-400 text-xs">
+      <i data-lucide="folder-audio" class="w-5 h-5"></i>
+      <span class="mt-1">បណ្ណាល័យ</span>
+    </button>
+    <button onclick="switchTab('minutes')" class="flex flex-col items-center py-1 text-slate-400 text-xs">
+      <i data-lucide="file-text" class="w-5 h-5"></i>
+      <span class="mt-1">កំណត់ហេតុ</span>
+    </button>
+    <button onclick="switchTab('settings')" class="flex flex-col items-center py-1 text-slate-400 text-xs">
+      <i data-lucide="settings" class="w-5 h-5"></i>
+      <span class="mt-1">ការកំណត់</span>
+    </button>
+  </div>
+
+  <!-- Main Content Container -->
+  <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8 mb-16 md:mb-0">
+
+    <!-- ========================================== -->
+    <!-- TAB 1: ស្ទូឌីយោថតសម្លេង (STUDIO RECORDER) -->
+    <!-- ========================================== -->
+    <section id="pane-record" class="space-y-6">
+      
+      <!-- Top Status Banner -->
+      <div class="bg-gradient-to-r from-slate-800/90 via-slate-850 to-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs rounded-full mb-2">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+              <span>High Quality Opus Codec • សុីទំហំតិច (~12 MB/hr) • ថតគ្មានដែនកំណត់</span>
+            </div>
+            <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">ស្ទូឌីយោថតសម្លេង & Live Translation</h2>
+            <p class="text-sm text-slate-400 mt-1">ថតសម្លេងគុណភាពខ្ពស់ បម្លែងជាអក្សរផ្ទាល់ និងបកប្រែពាក្យសម្តីភ្លាមៗក្នុងពេលកំពុងនិយាយ</p>
+          </div>
+
+          <!-- Target Translation Language Selector -->
+          <div class="flex items-center gap-2 bg-slate-950/80 p-2 rounded-xl border border-slate-800 text-xs">
+            <span class="text-slate-400 flex items-center gap-1">
+              <i data-lucide="languages" class="w-4 h-4 text-emerald-400"></i> បកប្រែជា៖
+            </span>
+            <select id="targetLanguageSelect" onchange="changeTargetLanguage(this.value)" class="bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-slate-200 focus:outline-none focus:border-emerald-500 text-xs">
+              <option value="en">English (អង់គ្លេស)</option>
+              <option value="km">ភាសាខ្មែរ (Khmer)</option>
+              <option value="fr">Français (បារាំង)</option>
+              <option value="zh-CN">中文 (ចិន)</option>
+              <option value="ja">日本語 (ជប៉ុន)</option>
+              <option value="th">ไทย (ថៃ)</option>
+              <option value="vi">Tiếng Việt (វៀតណាម)</option>
+              <option value="ko">한국어 (កូរ៉េ)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Recording Console Card -->
+      <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
+        
+        <!-- Live Waveform Canvas & Volume Meter -->
+        <div class="w-full h-32 bg-slate-900/90 rounded-xl overflow-hidden border border-slate-800/80 relative mb-4">
+          <canvas id="waveformCanvas" class="w-full h-full"></canvas>
+          <div id="audioStatusBadge" class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur px-3 py-1 rounded-full border border-slate-800 text-xs font-mono text-slate-400 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-slate-600" id="mic-status-indicator"></span>
+            <span id="mic-status-text">រង់ចាំចាប់ផ្តើម...</span>
+          </div>
+
+          <!-- Bitrate & Codec Pill -->
+          <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur px-3 py-1 rounded-full border border-slate-800 text-xs font-mono text-emerald-400 flex items-center gap-1.5">
+            <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
+            <span>Opus 48kHz (Full Spectrum)</span>
+          </div>
+
+          <!-- Audio Input Level Bar (VU Meter) -->
+          <div class="absolute bottom-2 left-3 right-3 bg-slate-950/70 backdrop-blur px-3 py-1.5 rounded-lg border border-slate-800 flex items-center gap-3 text-[11px]">
+            <span class="text-slate-400 flex items-center gap-1 flex-shrink-0">
+              <i data-lucide="volume-2" class="w-3.5 h-3.5 text-emerald-400"></i>
+              <span>កម្រិតសម្លេងចូល (Mic Level):</span>
+            </span>
+            <div class="flex-1 bg-slate-800 rounded-full h-2 overflow-hidden">
+              <div id="micVolumeBar" class="bg-gradient-to-r from-emerald-500 via-teal-400 to-amber-400 h-full w-0 transition-all duration-75 rounded-full"></div>
+            </div>
+            <span id="micVolumePercent" class="font-mono text-slate-400 w-8 text-right">0%</span>
+          </div>
+        </div>
+
+        <!-- Recording Timer & Storage Size Counter -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-6 py-4 border-y border-slate-800/60 mb-6">
+          <div class="text-center sm:text-left">
+            <div class="text-xs uppercase tracking-wider text-slate-500 font-semibold mb-1">រយៈពេលថតសម្លេង</div>
+            <div id="timerDisplay" class="text-4xl sm:text-5xl font-mono font-bold text-white tracking-widest">00:00:00</div>
+          </div>
+
+          <div class="flex items-center gap-6">
+            <div class="text-center">
+              <div class="text-xs text-slate-500 font-semibold mb-1">ទំហំឯកសារប្រមាណ</div>
+              <div id="sizeEstimateDisplay" class="text-lg font-mono font-bold text-emerald-400">0.00 MB</div>
+            </div>
+            <div class="w-px h-10 bg-slate-800 hidden sm:block"></div>
+            <div class="text-center">
+              <div class="text-xs text-slate-500 font-semibold mb-1">អត្រាបង្ហាប់ (Quality)</div>
+              <div class="text-sm font-semibold text-slate-300">Studio Voice (32kbps)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls: Record / Pause / Stop -->
+        <div class="flex flex-wrap items-center justify-center gap-4 py-2">
+          
+          <!-- Hidden mobile microphone capture input (Works on ALL phones even over HTTP!) -->
+          <input type="file" id="mobileAudioCapture" accept="audio/*" capture="microphone" class="hidden" onchange="handleMobileAudioCapture(event)">
+
+          <!-- Start / Record Button -->
+          <button id="btnRecord" onclick="startRecording()" class="px-6 py-3.5 bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-medium rounded-xl shadow-lg shadow-emerald-600/30 flex items-center gap-3 transition-all transform active:scale-95 text-base">
+            <div class="w-3.5 h-3.5 rounded-full bg-white recording-pulse"></div>
+            <span>ចាប់ផ្តើមថត (Start)</span>
+          </button>
+
+          <!-- Native Phone Microphone Button (Direct Mobile Shortcut) -->
+          <button onclick="document.getElementById('mobileAudioCapture').click()" class="sm:hidden px-4 py-3 bg-sky-600 hover:bg-sky-500 text-white font-medium rounded-xl shadow flex items-center gap-2 text-sm transition">
+            <i data-lucide="mic" class="w-4 h-4"></i>
+            <span>ថតតាមទូរស័ព្ទ (Phone Mic)</span>
+          </button>
+
+          <!-- Pause / Resume Button -->
+          <button id="btnPause" onclick="togglePauseRecording()" disabled class="px-5 py-3.5 bg-slate-800 hover:bg-slate-750 disabled:opacity-40 disabled:cursor-not-allowed text-slate-200 font-medium rounded-xl border border-slate-700 flex items-center gap-2 transition text-sm">
+            <i data-lucide="pause" class="w-4 h-4"></i>
+            <span id="pauseBtnText">ផ្អាក (Pause)</span>
+          </button>
+
+          <!-- Stop & Save Button -->
+          <button id="btnStop" onclick="stopRecording()" disabled class="px-6 py-3.5 bg-rose-600 hover:bg-rose-500 disabled:opacity-40 disabled:cursor-not-allowed text-white font-medium rounded-xl shadow-lg shadow-rose-600/30 flex items-center gap-2 transition-all transform active:scale-95 text-sm">
+            <i data-lucide="square" class="w-4 h-4 fill-white"></i>
+            <span>បញ្ចប់ & រក្សាទុក (Stop & Save)</span>
+          </button>
+
+        </div>
+
+        <!-- Quick Options Bar -->
+        <div class="mt-6 pt-4 border-t border-slate-850 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-400">
+          <label class="flex items-center gap-2 cursor-pointer select-none">
+            <input type="checkbox" id="chkAutoRefineKhmer" checked class="w-4 h-4 rounded text-violet-500 focus:ring-violet-500 focus:ring-offset-slate-900 bg-slate-800 border-slate-700">
+            <span class="text-violet-300 font-medium flex items-center gap-1.5">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5 text-violet-400"></i> កែសម្រួលអក្ខរាវិរុទ្ធស្វ័យប្រវត្តិពេលថតចប់ (Auto AI Refine)
+            </span>
+          </label>
+
+          <label class="flex items-center gap-2 cursor-pointer select-none">
+            <input type="checkbox" id="chkAutoPersonalTelegram" checked class="w-4 h-4 rounded text-sky-500 focus:ring-sky-500 focus:ring-offset-slate-900 bg-slate-800 border-slate-700">
+            <span class="text-sky-300 font-medium flex items-center gap-1.5">
+              <i data-lucide="send" class="w-3.5 h-3.5"></i> បើកផ្ញើទៅ Telegram បុគ្គលភ្លាមៗពេលថតចប់
+            </span>
+          </label>
+
+          <label class="flex items-center gap-2 cursor-pointer select-none">
+            <input type="checkbox" id="chkAutoMinutes" checked class="w-4 h-4 rounded text-emerald-500 focus:ring-emerald-500 focus:ring-offset-slate-900 bg-slate-800 border-slate-700">
+            <span>រៀបចំទម្រង់កំណត់ហេតុរដ្ឋបាលស្វ័យប្រវត្ត</span>
+          </label>
+        </div>
+
+      </div>
+
+
+      <!-- Single Unified Text Box (ប្រអប់អត្ថបទបម្លែងសម្លេងតែមួយគត់ - អាចចម្លង និងបិទភ្ជាប់បាន) -->
+      <div class="bg-slate-950 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-2xl space-y-4">
+        
+        <!-- Box Header with Title and Action Toolbar -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-emerald-500" id="transcriptionLiveDot"></span>
+            <h3 class="font-bold text-white text-base flex items-center gap-2">
+              <i data-lucide="file-text" class="w-5 h-5 text-emerald-400"></i>
+              <span>ប្រអប់អត្ថបទបម្លែងសម្លេង (Voice Transcription Box)</span>
+            </h3>
+          </div>
+
+          <!-- Action Buttons: Copy, Paste, AI Refine, Clear, Telegram, Minutes -->
+          <div class="flex flex-wrap items-center gap-2">
+            <button onclick="copyUnifiedText()" class="px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-xs font-semibold flex items-center gap-1.5 transition shadow">
+              <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+              <span>ចម្លង (Copy)</span>
+            </button>
+            <button onclick="pasteUnifiedText()" class="px-3.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition">
+              <i data-lucide="clipboard" class="w-3.5 h-3.5 text-blue-400"></i>
+              <span>បិទភ្ជាប់ (Paste)</span>
+            </button>
+            <button id="btnRefineKhmer" onclick="refineUnifiedTextWithAI()" class="px-3.5 py-1.5 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white rounded-lg text-xs font-semibold flex items-center gap-1.5 transition shadow shadow-violet-600/30" title="កែសម្រួលអក្ខរាវិរុទ្ធ វេយ្យាករណ៍ និងលុបពាក្យនិយាយច្រឡំ">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-300"></i>
+              <span id="refineBtnText">✨ កែអក្ខរាវិរុទ្ធ (AI Refine)</span>
+            </button>
+            <button onclick="clearUnifiedText()" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-rose-400 border border-slate-700 rounded-lg text-xs transition" title="លុបសម្អាត">
+              <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+            </button>
+            <button onclick="sendBoxToPersonalTelegram()" class="px-3.5 py-1.5 bg-sky-600 hover:bg-sky-500 text-white rounded-lg text-xs font-semibold flex items-center gap-1.5 transition shadow">
+              <i data-lucide="send" class="w-3.5 h-3.5"></i>
+              <span>ផ្ញើ Telegram</span>
+            </button>
+            <button onclick="applyBoxToMinutes()" class="px-3 py-1.5 bg-amber-600 hover:bg-amber-500 text-white rounded-lg text-xs font-semibold flex items-center gap-1 transition shadow" title="បម្លែងអត្ថបទទៅជាកំណត់ហេតុអង្គប្រជុំ">
+              <i data-lucide="file-check" class="w-3.5 h-3.5"></i>
+              <span>ធ្វើកំណត់ហេតុ</span>
+            </button>
+            <button onclick="applyBoxToInvitation()" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs font-semibold flex items-center gap-1 transition shadow" title="បម្លែងអត្ថបទទៅជាលិខិតអញ្ជើញ">
+              <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+              <span>ធ្វើលិខិតអញ្ជើញ</span>
+            </button>
+            <button onclick="applyBoxToRouting()" class="px-3 py-1.5 bg-teal-600 hover:bg-teal-500 text-white rounded-lg text-xs font-semibold flex items-center gap-1 transition shadow" title="បម្លែងអត្ថបទទៅជាកំណត់បង្ហាញលិខិតចូល">
+              <i data-lucide="file-check-2" class="w-3.5 h-3.5"></i>
+              <span>កំណត់បង្ហាញលិខិតចូល</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- The Single Unified Text Area -->
+        <div class="relative">
+          <textarea id="unifiedTextBox" rows="9" spellcheck="false" oninput="updateBoxCounts()" placeholder="ពេលលោកអ្នកចុច «ចាប់ផ្តើមថត» ហើយនិយាយ អក្សរនឹងទាញចេញមកក្នុងប្រអប់នេះតែម្តង... (លោកអ្នកអាចវាយបញ្ចូល កែសម្រួល ចម្លង (Copy) ឬបិទភ្ជាប់ (Paste) បានដោយសេរី)" class="w-full bg-slate-900 border border-slate-800 focus:border-emerald-500 rounded-xl p-4 text-slate-100 text-sm sm:text-base leading-relaxed focus:outline-none font-khmer resize-y select-text shadow-inner"></textarea>
+        </div>
+
+        <!-- Box Footer with Counts & Quick Translation -->
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-2 text-xs text-slate-400">
+          <div class="flex items-center gap-3">
+            <span id="boxWordCount" class="font-mono text-slate-400">0 ពាក្យ • 0 តួអក្សរ</span>
+            <span class="text-slate-600">|</span>
+            <span id="unifiedStatusPill" class="text-slate-400 flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-slate-500"></span> រង់ចាំការថតសម្លេង...
+            </span>
+          </div>
+
+          <!-- Quick Translation Selector -->
+          <div class="flex items-center gap-2">
+            <span>បកប្រែអត្ថបទក្នុងប្រអប់នេះជា៖</span>
+            <select id="quickTransLang" class="bg-slate-900 border border-slate-700 rounded px-2 py-1 text-slate-200 text-xs">
+              <option value="en">English (អង់គ្លេស)</option>
+              <option value="fr">Français (បារាំង)</option>
+              <option value="zh-CN">中文 (ចិន)</option>
+              <option value="ja">日本語 (ជប៉ុន)</option>
+              <option value="th">ไทย (ថៃ)</option>
+              <option value="vi">Tiếng Việt (វៀតណាម)</option>
+              <option value="ko">한국어 (កូរ៉េ)</option>
+            </select>
+            <button onclick="translateUnifiedBox()" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-emerald-400 border border-slate-700 rounded text-xs transition">
+              បកប្រែភ្លាមៗ
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- TAB 2: បណ្ណាល័យឯកសារ & DRAG-AND-DROP       -->
+    <!-- ========================================== -->
+    <section id="pane-library" class="space-y-6 hidden">
+      
+      <!-- Drag & Drop Upload Zone -->
+      <div id="dropZone" class="border-2 border-dashed border-slate-700 hover:border-emerald-500 bg-slate-950/60 hover:bg-emerald-500/5 transition-all duration-300 rounded-2xl p-8 text-center cursor-pointer relative group">
+        <input type="file" id="fileInput" multiple accept="audio/*,.mp3,.wav,.ogg,.m4a,.webm,.pdf,.doc,.docx,.txt" class="hidden" onchange="handleFileSelect(event)">
+        
+        <div class="flex flex-col items-center justify-center space-y-3">
+          <div class="w-16 h-16 rounded-2xl bg-slate-900 border border-slate-800 group-hover:border-emerald-500/50 flex items-center justify-center text-slate-400 group-hover:text-emerald-400 transition transform group-hover:scale-105 shadow-xl">
+            <i data-lucide="upload-cloud" class="w-8 h-8"></i>
+          </div>
+          <h3 class="text-base sm:text-lg font-bold text-white">ទម្លាក់ឯកសារសម្លេង ឬឯកសារផ្សេងៗចូលទីនេះ</h3>
+          <p class="text-xs sm:text-sm text-slate-400 max-w-md">
+            គាំទ្រឯកសារសម្លេង (MP3, WAV, M4A, OGG, WebM) និងឯកសារ (PDF, DOCX, TXT) • អាចចាក់ស្តាប់ មើលអក្សរ និងបង្កើត link ចែករំលែកបានភ្លាមៗ
+          </p>
+          <button type="button" onclick="document.getElementById('fileInput').click()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium rounded-lg border border-slate-700 transition">
+            ជ្រើសរើសឯកសារពីកុំព្យូទ័រ
+          </button>
+        </div>
+      </div>
+
+      <!-- Search & Filter Bar -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 bg-slate-950 p-4 rounded-xl border border-slate-800">
+        <div class="relative w-full sm:w-80">
+          <i data-lucide="search" class="w-4 h-4 text-slate-500 absolute left-3 top-1/2 -translate-y-1/2"></i>
+          <input type="text" id="searchRecordingsInput" oninput="filterRecordings(this.value)" placeholder="ស្វែងរកតាមចំណងជើង ឬខ្លឹមសារ..." class="w-full bg-slate-900 border border-slate-800 rounded-lg pl-9 pr-4 py-2 text-xs text-slate-200 focus:outline-none focus:border-emerald-500">
+        </div>
+
+        <div class="flex items-center gap-2 w-full sm:w-auto justify-end">
+          <button onclick="loadRecordings()" class="px-3 py-2 bg-slate-900 hover:bg-slate-800 text-slate-300 rounded-lg border border-slate-800 text-xs flex items-center gap-1.5 transition">
+            <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
+            <span>Refresh</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Recordings List Container -->
+      <div id="recordingsList" class="space-y-4">
+        <div class="text-center py-12 text-slate-500">
+          <i data-lucide="inbox" class="w-10 h-10 mx-auto mb-2 opacity-50"></i>
+          <p class="text-sm">មិនទាន់មានឯកសារថតសម្លេងនៅឡើយទេ</p>
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- TAB 3: កំណត់ហេតុរដ្ឋបាល (OFFICIAL MINUTES)  -->
+    <!-- ========================================== -->
+    <section id="pane-minutes" class="space-y-6 hidden">
+      
+      <!-- Sticky Administrative Documents Header & Sub-Navigation -->
+      <div class="sticky top-[64px] z-40 bg-slate-950/95 backdrop-blur-md border border-slate-800 rounded-2xl p-4 sm:p-5 shadow-2xl space-y-3.5">
+        
+        <!-- Top Row: Badge, Title & Global Action Buttons -->
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
+          <div>
+            <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-amber-500/10 border border-amber-500/20 text-amber-400 text-[11px] rounded-full mb-1">
+              <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+              <span>ទម្រង់លិខិតរដ្ឋបាលស្តង់ដារ • ក្រសួងមហាផ្ទៃ និងរាជរដ្ឋាភិបាលកម្ពុជា</span>
+            </div>
+            <h2 id="adminDocHeaderTitle" class="text-lg sm:text-xl font-bold text-white tracking-wide">រៀបចំកំណត់ហេតុអង្គប្រជុំរដ្ឋបាល</h2>
+            <p id="adminDocHeaderDesc" class="text-xs text-slate-400">បម្លែងទិន្នន័យពីការថតសម្លេងឱ្យទៅជាទម្រង់លិខិតផ្លូវការ អាចទាញយកជា Word (.doc) ឬបោះពុម្ពបានភ្លាមៗ</p>
+          </div>
+
+          <!-- Action Export Buttons -->
+          <div class="flex flex-wrap items-center gap-2 flex-shrink-0">
+            <button onclick="exportWordCurrentDoc()" class="px-3.5 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-semibold flex items-center gap-1.5 transition shadow shadow-blue-600/20" title="ទាញយកជា Microsoft Word">
+              <i data-lucide="file-down" class="w-4 h-4"></i>
+              <span>ទាញយកជា Word (.doc)</span>
+            </button>
+            <button onclick="printCurrentDoc()" class="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition" title="បោះពុម្ព ឬរក្សាទុកជា PDF">
+              <i data-lucide="printer" class="w-4 h-4"></i>
+              <span>បោះពុម្ព / PDF</span>
+            </button>
+            <button onclick="sendCurrentDocToPersonalTelegram()" class="px-3.5 py-2 bg-sky-600 hover:bg-sky-500 text-white rounded-lg text-xs font-semibold flex items-center gap-1.5 transition shadow shadow-sky-600/20" title="ផ្ញើទៅកាន់ Telegram បុគ្គល">
+              <i data-lucide="send" class="w-4 h-4"></i>
+              <span>ផ្ញើ Telegram</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Bottom Row: 3 Clear Document Switcher Tabs -->
+        <div class="flex items-center gap-2 p-1 bg-slate-900 border border-slate-800/80 rounded-xl overflow-x-auto">
+          <button id="subtab-minutes" onclick="switchAdminDocType('minutes')" class="subtab-doc-btn flex-1 min-w-[190px] py-2 px-3 rounded-lg text-xs font-bold transition flex items-center justify-center gap-2 bg-emerald-600 text-white shadow-sm">
+            <i data-lucide="file-text" class="w-4 h-4"></i>
+            <span>១. កំណត់ហេតុអង្គប្រជុំ</span>
+          </button>
+          <button id="subtab-invitation" onclick="switchAdminDocType('invitation')" class="subtab-doc-btn flex-1 min-w-[190px] py-2 px-3 rounded-lg text-xs font-bold transition flex items-center justify-center gap-2 text-slate-400 hover:text-white hover:bg-slate-800">
+            <i data-lucide="mail" class="w-4 h-4"></i>
+            <span>២. លិខិតអញ្ជើញ (Invitation)</span>
+          </button>
+          <button id="subtab-routing" onclick="switchAdminDocType('routing')" class="subtab-doc-btn flex-1 min-w-[190px] py-2 px-3 rounded-lg text-xs font-bold transition flex items-center justify-center gap-2 text-slate-400 hover:text-white hover:bg-slate-800">
+            <i data-lucide="file-check-2" class="w-4 h-4"></i>
+            <span>៣. កំណត់បង្ហាញលិខិតចូល</span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- ============================================== -->
+      <!-- SUB-SECTION 1: កំណត់ហេតុអង្គប្រជុំ (MINUTES)     -->
+      <!-- ============================================== -->
+      <div id="docSection-minutes" class="admin-doc-section">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Left: Quick Editor Form -->
+        <div class="lg:col-span-5 bg-slate-950 border border-slate-800 rounded-2xl p-6 space-y-4">
+          <h3 class="text-sm font-bold text-white flex items-center gap-2 pb-3 border-b border-slate-800">
+            <i data-lucide="edit-3" class="w-4 h-4 text-emerald-400"></i>
+            <span>កែសម្រួលព័ត៌មានកិច្ចប្រជុំ</span>
+          </h3>
+
+          <div class="space-y-3 text-xs">
+            <div>
+              <label class="block text-slate-400 mb-1">ស្ថាប័ន / ក្រសួង</label>
+              <textarea id="minMinistry" rows="2" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:border-emerald-500" oninput="updateMinutesPreview()">ក្រសួងមហាផ្ទៃ&#10;អគ្គនាយកដ្ឋានរដ្ឋបាល</textarea>
+            </div>
+
+            <div>
+              <label class="block text-slate-400 mb-1">កម្មវត្ថុ / ចំណងជើងកិច្ចប្រជុំ</label>
+              <input type="text" id="minTitle" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:border-emerald-500" value="កិច្ចប្រជុំពិភាក្សាការងារ និងត្រួតពិនិត្យវឌ្ឍនភាព" oninput="updateMinutesPreview()">
+            </div>
+
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="block text-slate-400 mb-1">កាលបរិច្ឆេទ</label>
+                <input type="text" id="minDatetime" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:border-emerald-500" oninput="updateMinutesPreview()">
+              </div>
+              <div>
+                <label class="block text-slate-400 mb-1">ទីកន្លែង</label>
+                <input type="text" id="minLocation" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:border-emerald-500" value="សាលប្រជុំទីស្តីការក្រសួង" oninput="updateMinutesPreview()">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-slate-400 mb-1">សមាសភាពចូលរួម</label>
+              <textarea id="minAttendees" rows="2" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:border-emerald-500" oninput="updateMinutesPreview()">ឯកឧត្តម លោកជំទាវ លោក លោកស្រី ប្រធាន អនុប្រធាននាយកដ្ឋាន និងមន្ត្រីជំនាញ</textarea>
+            </div>
+
+            <div>
+              <label class="block text-slate-400 mb-1">របៀបវារៈអង្គប្រជុំ</label>
+              <textarea id="minAgenda" rows="2" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:border-emerald-500" oninput="updateMinutesPreview()">១. ពិនិត្យវឌ្ឍនភាពការងារកន្លងមក&#10;២. លើកទិសដៅអនុវត្តបន្ត និងដោះស្រាយបញ្ហាប្រឈម</textarea>
+            </div>
+
+            <div>
+              <label class="block text-slate-400 mb-1">ដំណើរការនៃអង្គប្រជុំ និងការពិភាក្សា</label>
+              <textarea id="minContent" rows="4" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:border-emerald-500 leading-relaxed" oninput="updateMinutesPreview()">ប្រធានអង្គប្រជុំបានថ្លែងបើកកិច្ចប្រជុំ និងផ្តល់ឱកាសឱ្យសមាជិកទាំងអស់ចូលរួមផ្តល់យោបល់យ៉ាងផុលផុសលើរបៀបវារៈនីមួយៗ។</textarea>
+            </div>
+
+            <div>
+              <label class="block text-slate-400 mb-1">សេចក្តីសម្រេច និងទិសដៅបន្ត (IV)</label>
+              <textarea id="minDecisions" rows="2" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:border-emerald-500" oninput="updateMinutesPreview()">អង្គប្រជុំបានឯកភាពទាំងស្រុងលើរបាយការណ៍ និងទិសដៅការងារដែលបានដាក់ចេញ។</textarea>
+            </div>
+
+            <!-- Dynamic Custom Sections Container (ជំពូកបន្ថែម V, VI...) -->
+            <div id="dynamicSectionsContainer" class="space-y-3"></div>
+
+            <!-- Dynamic Custom Tables Container (តារាង និងជួរឈរ Columns) -->
+            <div id="dynamicTablesContainer" class="space-y-4"></div>
+
+            <!-- Action Toolbar for adding Custom Sections & Tables/Columns -->
+            <div class="py-2.5 px-3 bg-slate-900/60 border border-slate-800 rounded-xl flex flex-wrap items-center justify-between gap-2">
+              <span class="text-[11px] text-slate-400 font-semibold flex items-center gap-1">
+                <i data-lucide="layout-grid" class="w-3.5 h-3.5 text-emerald-400"></i> បន្ថែមផ្នែក/តារាង៖
+              </span>
+              <div class="flex items-center gap-2">
+                <button type="button" onclick="addCustomSection()" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-750 text-emerald-300 border border-emerald-500/30 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition shadow-sm">
+                  <i data-lucide="plus-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+                  <span>+ ជំពូកថ្មី (Section)</span>
+                </button>
+                <button type="button" onclick="addCustomTable()" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-750 text-sky-300 border border-sky-500/30 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition shadow-sm">
+                  <i data-lucide="columns" class="w-3.5 h-3.5 text-sky-400"></i>
+                  <span>+ តារាង/Column (ជួរឈរ)</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="block text-slate-400 mb-1">អ្នកធ្វើកំណត់ហេតុ</label>
+                <input type="text" id="minRecorder" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:border-emerald-500" value="អ្នកធ្វើកំណត់ហេតុ" oninput="updateMinutesPreview()">
+              </div>
+              <div>
+                <label class="block text-slate-400 mb-1">ប្រធានអង្គប្រជុំ</label>
+                <input type="text" id="minChair" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:border-emerald-500" value="ប្រធានអង្គប្រជុំ" oninput="updateMinutesPreview()">
+              </div>
+            </div>
+
+            <button onclick="aiRefineMinutes()" class="w-full mt-2 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white rounded-lg font-medium text-xs flex items-center justify-center gap-2 transition shadow">
+              <i data-lucide="wand-2" class="w-3.5 h-3.5"></i>
+              <span>កែសម្រួលទម្រង់ដោយស្វ័យប្រវត្តតាម AI</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: Official A4 Live Preview -->
+        <div class="lg:col-span-7 flex justify-center bg-slate-950 border border-slate-800 rounded-2xl p-4 sm:p-6 overflow-x-auto">
+          
+          <div id="printArea" class="a4-paper w-full max-w-[21cm] printable-active">
+            
+            <!-- Official Header Table -->
+            <table class="w-full mb-6">
+              <tr>
+                <td class="w-1/2 align-top text-left">
+                  <div id="pvMinistry" class="font-muol text-xs leading-relaxed text-slate-900">ក្រសួងមហាផ្ទៃ<br>អគ្គនាយកដ្ឋានរដ្ឋបាល</div>
+                  <div class="text-xs text-slate-700 mt-1">លេខ៖ .................... / ...........</div>
+                </td>
+                <td class="w-1/2 align-top text-center">
+                  <div class="font-muol text-sm text-slate-900">ព្រះរាជាណាចក្រកម្ពុជា</div>
+                  <div class="font-muol text-xs text-slate-900 mt-0.5">ជាតិ សាសនា ព្រះមហាក្សត្រ</div>
+                  <div class="text-xs text-slate-700 mt-[-2px]">~~~ 🙡 🙣 ~~~</div>
+                </td>
+              </tr>
+            </table>
+
+            <!-- Title -->
+            <div class="text-center my-6">
+              <h2 class="font-muol text-lg text-slate-900 tracking-wide">កំណត់ហេតុ</h2>
+              <div class="font-muol text-sm text-slate-800 mt-1">ស្តីពី</div>
+              <div id="pvTitle" class="font-muol text-sm text-slate-900 mt-1">កិច្ចប្រជុំពិភាក្សាការងារ និងត្រួតពិនិត្យវឌ្ឍនភាព</div>
+            </div>
+
+            <!-- Introductory Sentence -->
+            <p class="text-justify indent-8 mb-4 text-xs leading-relaxed text-slate-900">
+              នៅ<span id="pvDatetime">ថ្ងៃទី... ខែ... ឆ្នាំ...</span> វេលាម៉ោង ........... នៅ<span id="pvLocation">សាលប្រជុំ</span> បានរៀបចំកិច្ចប្រជុំស្តីពី «<span id="pvTitleInline">កិច្ចប្រជុំ</span>» ក្រោមអធិបតីភាពដ៏ខ្ពង់ខ្ពស់របស់ <span id="pvChairInline">ប្រធានអង្គប្រជុំ</span>។
+            </p>
+
+            <!-- Sections -->
+            <div class="space-y-4 text-xs leading-relaxed text-slate-900">
+              <div>
+                <h4 class="font-muol text-xs mb-1">I. សមាសភាពចូលរួម៖</h4>
+                <div id="pvAttendees" class="indent-6 whitespace-pre-line text-slate-800"></div>
+              </div>
+
+              <div>
+                <h4 class="font-muol text-xs mb-1">II. របៀបវារៈនៃអង្គប្រជុំ៖</h4>
+                <div id="pvAgenda" class="indent-6 whitespace-pre-line text-slate-800"></div>
+              </div>
+
+              <div>
+                <h4 class="font-muol text-xs mb-1">III. ដំណើរការនៃអង្គប្រជុំ និងការពិភាក្សា៖</h4>
+                <div id="pvContent" class="indent-6 whitespace-pre-line text-slate-800 text-justify"></div>
+              </div>
+
+              <div>
+                <h4 class="font-muol text-xs mb-1">IV. សេចក្តីសម្រេច និងទិសដៅបន្ត៖</h4>
+                <div id="pvDecisions" class="indent-6 whitespace-pre-line text-slate-800"></div>
+              </div>
+
+              <!-- Dynamic Extra Sections in A4 Preview -->
+              <div id="pvCustomSections" class="space-y-4"></div>
+
+              <!-- Dynamic Extra Tables/Columns in A4 Preview -->
+              <div id="pvCustomTables" class="space-y-4"></div>
+
+              <div class="pt-2">
+                <p id="pvClosingNote" class="indent-8 text-slate-800">
+                  អង្គប្រជុំត្រូវបានបិទបញ្ចប់នៅវេលាម៉ោង ... នាទី ថ្ងៃខែឆ្នាំដដែល ប្រកបដោយបរិយាកាសរីករាយ និងស្និទ្ធស្នាលជាទីបំផុត។
+                </p>
+              </div>
+            </div>
+
+            <!-- Signatures Table -->
+            <table class="w-full mt-12 text-xs">
+              <tr>
+                <td class="w-1/2 text-center align-top">
+                  <div class="font-muol text-slate-900">អ្នកធ្វើកំណត់ហេតុ</div>
+                  <div class="h-20"></div>
+                  <div id="pvRecorderSign" class="font-muol text-slate-900">អ្នកធ្វើកំណត់ហេតុ</div>
+                </td>
+                <td class="w-1/2 text-center align-top">
+                  <div id="pvSignDate" class="text-slate-800 mb-1">ថ្ងៃទី...... ខែ...... ឆ្នាំ២០...</div>
+                  <div class="font-muol text-slate-900">ប្រធានអង្គប្រជុំ</div>
+                  <div class="h-20"></div>
+                  <div id="pvChairSign" class="font-muol text-slate-900">ប្រធានអង្គប្រជុំ</div>
+                </td>
+              </tr>
+            </table>
+
+          </div>
+
+        </div>
+
+      </div>
+      </div> <!-- /docSection-minutes -->
+
+      <!-- ============================================== -->
+      <!-- SUB-SECTION 2: លិខិតអញ្ជើញ (INVITATION LETTER)  -->
+      <!-- ============================================== -->
+      <div id="docSection-invitation" class="admin-doc-section hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          
+          <!-- Left: Quick Editor Form -->
+          <div class="lg:col-span-5 bg-slate-950 border border-slate-800 rounded-2xl p-5 space-y-4">
+            <h3 class="text-sm font-bold text-white flex items-center gap-2 pb-3 border-b border-slate-800">
+              <i data-lucide="edit-3" class="w-4 h-4 text-emerald-400"></i>
+              <span>កែសម្រួលព័ត៌មានលិខិតអញ្ជើញ</span>
+            </h3>
+
+            <div class="space-y-3 text-xs">
+              <!-- Card 1: ស្ថាប័ន & ចំណងជើង -->
+              <div class="p-3 bg-slate-900/80 border border-slate-800 rounded-xl space-y-2.5">
+                <div class="text-[11px] font-bold text-emerald-400 flex items-center gap-1.5">
+                  <i data-lucide="building" class="w-3.5 h-3.5"></i>
+                  <span>១. ស្ថាប័នម្ចាស់លិខិត & ចំណងជើង</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <div>
+                    <label class="block text-slate-400 mb-1 text-[11px]">ស្ថាប័ន / ក្រសួង</label>
+                    <textarea id="invMinistry" rows="2" spellcheck="false" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-1.5 text-slate-200 text-xs focus:outline-none focus:border-emerald-500 font-khmer leading-relaxed" oninput="updateInvitationPreview()">ក្រសួងមហាផ្ទៃ&#10;សាលាជាតិរដ្ឋបាលមូលដ្ឋាន</textarea>
+                  </div>
+                  <div class="space-y-2">
+                    <div>
+                      <label class="block text-slate-400 mb-1 text-[11px]">លេខលិខិត</label>
+                      <input type="text" id="invNumber" spellcheck="false" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-1.5 text-slate-200 text-xs focus:outline-none focus:border-emerald-500 font-khmer" value="លេខ៖ .................. / ........." oninput="updateInvitationPreview()">
+                    </div>
+                    <div>
+                      <label class="block text-slate-400 mb-1 text-[11px]">ចំណងជើងលិខិត</label>
+                      <input type="text" id="invTitle" spellcheck="false" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-1.5 text-slate-200 text-xs focus:outline-none focus:border-emerald-500 font-khmer font-bold text-emerald-400" value="លិខិតអញ្ជើញ" oninput="updateInvitationPreview()">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 2: ព័ត៌មានលម្អិតនៃកម្មវិធីប្រជុំ -->
+              <div class="p-3 bg-slate-900/80 border border-slate-800 rounded-xl space-y-2.5">
+                <div class="text-[11px] font-bold text-sky-400 flex items-center gap-1.5">
+                  <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+                  <span>២. ព័ត៌មានលម្អិតនៃកម្មវិធីប្រជុំ</span>
+                </div>
+                <div class="space-y-2">
+                  <div>
+                    <label class="block text-slate-400 mb-1 text-[11px]">សូមអញ្ជើញ៖</label>
+                    <textarea id="invInvitees" rows="2" spellcheck="false" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-1.5 text-slate-200 text-xs focus:outline-none focus:border-emerald-500 font-khmer" oninput="updateInvitationPreview()">- លោក លោកស្រីនាយករងសាលាជាតិរដ្ឋបាលមូលដ្ឋាន&#10;- លោក លោកស្រីប្រធាននាយកដ្ឋាន អនុប្រធាននាយកដ្ឋាន ប្រធានការិយាល័យ ចំណុះសាលាជាតិរដ្ឋបាលមូលដ្ឋាន</textarea>
+                  </div>
+
+                  <div>
+                    <label class="block text-slate-400 mb-1 text-[11px]">ដើម្បីចូលរួម៖</label>
+                    <textarea id="invPurpose" rows="2" spellcheck="false" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-1.5 text-slate-200 text-xs focus:outline-none focus:border-emerald-500 font-khmer" oninput="updateInvitationPreview()">កិច្ចប្រជុំពិនិត្យវឌ្ឍនភាពការងារប្រចាំខែតុលា និងទិសដៅការងារខែវិច្ឆិកា ឆ្នាំ២០២៦ របស់សាលាជាតិរដ្ឋបាលមូលដ្ឋាន ក្រសួងមហាផ្ទៃ</textarea>
+                  </div>
+
+                  <div>
+                    <label class="block text-slate-400 mb-1 text-[11px]">ក្រោមអធិបតីភាព៖</label>
+                    <input type="text" id="invChair" spellcheck="false" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-1.5 text-slate-200 text-xs focus:outline-none focus:border-emerald-500 font-khmer" value="ឯកឧត្តម សូ មុនីរក្សា នាយកសាលាជាតិរដ្ឋបាលមូលដ្ឋាន ក្រសួងមហាផ្ទៃ" oninput="updateInvitationPreview()">
+                  </div>
+
+                  <div>
+                    <label class="block text-slate-400 mb-1 text-[11px]">កាលបរិច្ឆេទ៖</label>
+                    <textarea id="invDateTime" rows="2" spellcheck="false" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-1.5 text-slate-200 text-xs focus:outline-none focus:border-emerald-500 font-khmer" oninput="updateInvitationPreview()">ថ្ងៃព្រហស្បតិ៍ ១០រោច ខែអស្សុជ ឆ្នាំមមី អដ្ឋស័ក ព.ស.២៥៧០ ត្រូវនឹងថ្ងៃទី៥ ខែវិច្ឆិកា ឆ្នាំ២០២៦ វេលាម៉ោង១៤:០០នាទីរសៀល</textarea>
+                  </div>
+
+                  <div>
+                    <label class="block text-slate-400 mb-1 text-[11px]">ទីកន្លែង៖</label>
+                    <input type="text" id="invLocation" spellcheck="false" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-1.5 text-slate-200 text-xs focus:outline-none focus:border-emerald-500 font-khmer" value="សាលាជាតិរដ្ឋបាលមូលដ្ឋាន ស្ថិតនៅសង្កាត់គោករកា ខណ្ឌព្រែកព្នៅ រាជធានីភ្នំពេញ" oninput="updateInvitationPreview()">
+                  </div>
+
+                  <div>
+                    <label class="block text-slate-400 mb-1 text-[11px]">សម្លៀកបំពាក់៖</label>
+                    <textarea id="invDress" rows="2" spellcheck="false" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-1.5 text-slate-200 text-xs focus:outline-none focus:border-emerald-500 font-khmer" oninput="updateInvitationPreview()">- ថ្នាក់ដឹកនាំ : បុរស(អាវធំ) ស្ត្រី(ប្រពៃណី ឬសមរម្យ)&#10;- អនុប្រធាននាយកដ្ឋាន និងប្រធានការិយាល័យ (សមរម្យ)៕</textarea>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 3: Online Meeting / QR Info Box with Show/Hide Toggle -->
+              <div class="p-3 bg-slate-900/80 border border-slate-800 rounded-xl space-y-2.5">
+                <div class="flex items-center justify-between pb-2 border-b border-slate-800">
+                  <div class="text-[11px] font-bold text-amber-400 flex items-center gap-1.5">
+                    <i data-lucide="video" class="w-3.5 h-3.5"></i>
+                    <span>៣. ព័ត៌មានប្រជុំអនឡាញ & QR Code</span>
+                  </div>
+                  <label class="flex items-center gap-2 cursor-pointer select-none bg-slate-950 px-2.5 py-1 rounded-lg border border-slate-800 hover:border-emerald-500/50 transition">
+                    <input type="checkbox" id="invShowQr" checked onchange="toggleInvitationQr()" class="w-4 h-4 rounded text-emerald-500 focus:ring-emerald-400 accent-emerald-500 cursor-pointer">
+                    <span class="text-[11px] text-slate-200 font-medium">បង្ហាញ QR Code លើលិខិត</span>
+                  </label>
+                </div>
+                
+                <div id="invQrFieldsContainer" class="space-y-2">
+                  <div class="grid grid-cols-2 gap-2">
+                    <div>
+                      <label class="block text-slate-400 mb-1 text-[11px]">Meeting ID</label>
+                      <input type="text" id="invMeetingId" spellcheck="false" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 text-xs font-mono" value="856 3990 5098" oninput="updateInvitationPreview()">
+                    </div>
+                    <div>
+                      <label class="block text-slate-400 mb-1 text-[11px]">Passcode</label>
+                      <input type="text" id="invPasscode" spellcheck="false" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 text-xs font-mono" value="123456" oninput="updateInvitationPreview()">
+                    </div>
+                  </div>
+                  <div>
+                    <label class="block text-slate-400 mb-1 text-[11px]">Link ប្រជុំ / គេហទំព័រ (សម្រាប់បង្កើត QR Code)</label>
+                    <input type="text" id="invQrLink" spellcheck="false" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 text-xs font-mono" value="https://meet.google.com/vat-1nak-voice" oninput="updateInvitationPreview()">
+                  </div>
+                  <div>
+                    <label class="block text-slate-400 mb-1 text-[11px]">ព័ត៌មានទំនាក់ទំនង</label>
+                    <textarea id="invContact" rows="2" spellcheck="false" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 text-xs font-khmer" oninput="updateInvitationPreview()">សូមទំនាក់ទំនង&#10;លោក ហេង វឌ្ឍនៈ&#10;០១០ ៨០៨ ១៨៨ / ០៧៦ ២៧៧ ៨៨៩៨</textarea>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 4: Signer & Khmer Calendar Date & Electronic Signature -->
+              <div class="p-3 bg-slate-900/80 border border-slate-800 rounded-xl space-y-2.5">
+                <div class="text-[11px] font-bold text-indigo-400 flex items-center gap-1.5">
+                  <i data-lucide="feather" class="w-3.5 h-3.5"></i>
+                  <span>៤. កាលបរិច្ឆេទ & ហត្ថលេខី</span>
+                </div>
+                <div class="space-y-2">
+                  <div>
+                    <label class="block text-slate-400 mb-1 text-[11px]">កាលបរិច្ឆេទចន្ទគតិ</label>
+                    <input type="text" id="invDateKhmer" spellcheck="false" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-1.5 text-slate-200 text-xs font-khmer" value="ថ្ងៃ                           ខែប             ឆ្នាំមមី អដ្ឋស័ក ព.ស.២៥៧០" oninput="updateInvitationPreview()">
+                  </div>
+                  <div>
+                    <label class="block text-slate-400 mb-1 text-[11px]">កាលបរិច្ឆេទសុរិយគតិ</label>
+                    <input type="text" id="invDateSolar" spellcheck="false" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-1.5 text-slate-200 text-xs font-khmer" value="រាជធានីភ្នំពេញ ថ្ងៃទី               ខែ                 ឆ្នាំ២០២៦" oninput="updateInvitationPreview()">
+                  </div>
+                  <div class="grid grid-cols-2 gap-2">
+                    <div>
+                      <label class="block text-slate-400 mb-1 text-[11px]">ឋានៈហត្ថលេខី</label>
+                      <input type="text" id="invSignerTitle" spellcheck="false" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-1.5 text-slate-200 text-xs font-khmer" value="នាយកសាលា" oninput="updateInvitationPreview()">
+                    </div>
+                    <div>
+                      <label class="block text-slate-400 mb-1 text-[11px]">ឈ្មោះអ្នកចុះហត្ថលេខា</label>
+                      <input type="text" id="invSignerName" spellcheck="false" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-1.5 text-slate-200 text-xs font-khmer" value="" placeholder="ទុកនៅទទេប្រសិនបើចុះហត្ថលេខាផ្ទាល់" oninput="updateInvitationPreview()">
+                    </div>
+                  </div>
+
+                  <!-- Electronic Signature Insertion Control -->
+                  <div class="p-2.5 bg-slate-950 border border-slate-800 rounded-lg space-y-2 mt-2">
+                    <div class="flex items-center justify-between">
+                      <span class="text-[11px] font-semibold text-emerald-400 flex items-center gap-1.5">
+                        <i data-lucide="pen-tool" class="w-3.5 h-3.5"></i>
+                        <span>ហត្ថលេខាអេឡិចត្រូនិច (E-Signature)</span>
+                      </span>
+                      <button type="button" id="btnRemoveInvSig" onclick="clearSignature('inv')" class="text-[10px] text-rose-400 hover:text-rose-300 hidden flex items-center gap-1 transition">
+                        <i data-lucide="trash-2" class="w-3 h-3"></i> លុបហត្ថលេខា
+                      </button>
+                    </div>
+                    
+                    <div class="flex items-center gap-2">
+                      <input type="file" id="fileInvSig" accept="image/png,image/jpeg,image/webp" class="hidden" onchange="handleSigUpload(event, 'inv')">
+                      <button type="button" onclick="document.getElementById('fileInvSig').click()" class="flex-1 py-1.5 px-3 bg-slate-900 hover:bg-slate-850 text-slate-200 border border-slate-800 rounded-lg text-xs flex items-center justify-center gap-1.5 transition">
+                        <i data-lucide="upload" class="w-3.5 h-3.5 text-emerald-400"></i>
+                        <span>បញ្ចូលរូបហត្ថលេខា (PNG / JPG)</span>
+                      </button>
+                      <button type="button" onclick="openSignaturePadModal('inv')" class="py-1.5 px-3 bg-slate-900 hover:bg-slate-850 text-slate-200 border border-slate-800 rounded-lg text-xs flex items-center justify-center gap-1.5 transition" title="គូរហត្ថលេខាដោយដៃផ្ទាល់">
+                        <i data-lucide="edit-3" class="w-3.5 h-3.5 text-sky-400"></i>
+                        <span>គូរដោយដៃ</span>
+                      </button>
+                    </div>
+
+                    <div id="invSigPreviewThumb" class="hidden p-2 bg-slate-900 border border-emerald-500/30 rounded-lg flex items-center justify-between">
+                      <div class="flex items-center gap-2">
+                        <div class="bg-white p-1 rounded border border-slate-300">
+                          <img id="invSigImgThumb" src="" alt="Signature" class="h-8 max-w-[120px] object-contain">
+                        </div>
+                        <span class="text-[10px] text-emerald-300 font-medium">បានបញ្ចូលហត្ថលេខារួចរាល់</span>
+                      </div>
+                      <span class="text-[10px] text-slate-400">នឹងបង្ហាញលើឯកសារ & Word</span>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <button onclick="aiRefineInvitation()" class="w-full mt-2 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white rounded-lg font-medium text-xs flex items-center justify-center gap-2 transition shadow">
+                <i data-lucide="wand-2" class="w-3.5 h-3.5"></i>
+                <span>កែសម្រួលលិខិតអញ្ជើញដោយស្វ័យប្រវត្តតាម AI</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Right: Official A4 Live Preview -->
+          <div class="lg:col-span-7 flex justify-center bg-slate-950 border border-slate-800 rounded-2xl p-4 sm:p-6 overflow-x-auto">
+            <div id="printAreaInvitation" class="a4-paper w-full max-w-[21cm]">
+              
+              <!-- Official Header Table -->
+              <table class="w-full mb-6">
+                <tr>
+                  <td class="w-1/2 align-top text-left">
+                    <div id="pvInvMinistry" class="font-muol text-xs leading-relaxed text-slate-900">ក្រសួងមហាផ្ទៃ<br>សាលាជាតិរដ្ឋបាលមូលដ្ឋាន</div>
+                    <div id="pvInvNumber" class="text-xs text-slate-700 mt-1">លេខ៖ .................. / .........</div>
+                  </td>
+                  <td class="w-1/2 align-top text-center">
+                    <div class="font-muol text-sm text-slate-900">ព្រះរាជាណាចក្រកម្ពុជា</div>
+                    <div class="font-muol text-xs text-slate-900 mt-0.5">ជាតិ សាសនា ព្រះមហាក្សត្រ</div>
+                    <div class="text-xs text-slate-700 mt-[-2px]">~~~ 🙡 🙣 ~~~</div>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Main Title -->
+              <div class="text-center my-6">
+                <h2 id="pvInvTitle" class="font-muol text-xl text-slate-900 tracking-wider">លិខិតអញ្ជើញ</h2>
+              </div>
+
+              <!-- Main Content Body Items (Labels NEVER Wrap, Content Wraps cleanly without overflow) -->
+              <div class="space-y-3.5 text-xs leading-relaxed text-slate-900">
+                <div class="flex items-start">
+                  <span class="font-muol w-36 flex-shrink-0 whitespace-nowrap">សូមអញ្ជើញ៖</span>
+                  <div id="pvInvInvitees" class="flex-1 min-w-0 whitespace-pre-line text-slate-800 font-khmer break-words" style="overflow-wrap: anywhere; word-break: break-word;"></div>
+                </div>
+
+                <div class="flex items-start">
+                  <span class="font-muol w-36 flex-shrink-0 whitespace-nowrap">ដើម្បីចូលរួម៖</span>
+                  <div id="pvInvPurpose" class="flex-1 min-w-0 whitespace-pre-line text-slate-800 text-justify font-khmer break-words" style="overflow-wrap: anywhere; word-break: break-word;"></div>
+                </div>
+
+                <div class="flex items-start">
+                  <span class="font-muol w-36 flex-shrink-0 whitespace-nowrap">ក្រោមអធិបតីភាព៖</span>
+                  <div id="pvInvChair" class="flex-1 min-w-0 text-slate-800 font-khmer break-words" style="overflow-wrap: anywhere; word-break: break-word;"></div>
+                </div>
+
+                <div class="flex items-start">
+                  <span class="font-muol w-36 flex-shrink-0 whitespace-nowrap">កាលបរិច្ឆេទ៖</span>
+                  <div id="pvInvDateTime" class="flex-1 min-w-0 whitespace-pre-line text-slate-800 font-khmer break-words" style="overflow-wrap: anywhere; word-break: break-word;"></div>
+                </div>
+
+                <div class="flex items-start">
+                  <span class="font-muol w-36 flex-shrink-0 whitespace-nowrap">ទីកន្លែង៖</span>
+                  <div id="pvInvLocation" class="flex-1 min-w-0 text-slate-800 font-khmer break-words" style="overflow-wrap: anywhere; word-break: break-word;"></div>
+                </div>
+
+                <div class="flex items-start">
+                  <span class="font-muol w-36 flex-shrink-0 whitespace-nowrap">សម្លៀកបំពាក់៖</span>
+                  <div id="pvInvDress" class="flex-1 min-w-0 whitespace-pre-line text-slate-800 font-khmer break-words" style="overflow-wrap: anywhere; word-break: break-word;"></div>
+                </div>
+              </div>
+
+              <!-- Bottom Dual Columns: QR & Online Box (Left) + Signer Block (Right) -->
+              <table class="w-full mt-10 text-xs" style="table-layout: fixed;">
+                <tr>
+                  <td id="pvInvQrCol" class="w-[45%] align-top text-left pr-4">
+                    <div id="pvInvQrBox" class="border border-slate-900 rounded-lg p-3 text-center space-y-1 bg-white inline-block w-[180px]">
+                      <div id="pvInvQrContainer" class="flex justify-center items-center py-1"></div>
+                      <div class="font-bold text-[11px] font-mono mt-1">Meeting ID <span id="pvInvMeetingId">856 3990 5098</span></div>
+                      <div class="font-bold text-[11px] font-mono">Passcode <span id="pvInvPasscode">123456</span></div>
+                      <div class="font-bold text-[11px] pt-1">សូមទំនាក់ទំនង</div>
+                      <div id="pvInvContact" class="text-[10px] leading-tight whitespace-pre-line text-slate-800 font-khmer"></div>
+                    </div>
+                  </td>
+                  <td id="pvInvSignerCol" class="w-[55%] align-top text-center">
+                    <div id="pvInvDateKhmer" class="text-slate-800 text-xs font-khmer"></div>
+                    <div id="pvInvDateSolar" class="text-slate-800 text-xs mt-1 font-khmer"></div>
+                    <div id="pvInvSignerTitle" class="font-muol text-sm text-slate-900 mt-2">នាយកសាលា</div>
+                    <!-- Electronic Signature Container -->
+                    <div class="min-h-[70px] flex items-center justify-center my-1">
+                      <img id="pvInvSignatureImg" src="" alt="ហត្ថលេខា" class="max-h-16 max-w-[170px] object-contain hidden">
+                    </div>
+                    <div id="pvInvSignerName" class="font-muol text-sm text-slate-900"></div>
+                  </td>
+                </tr>
+              </table>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ======================================================= -->
+      <!-- SUB-SECTION 3: កំណត់បង្ហាញលិខិតចូល (ROUTING / NOTE SLIP)  -->
+      <!-- ======================================================= -->
+      <div id="docSection-routing" class="admin-doc-section hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          
+          <!-- Left: Quick Editor Form -->
+          <div class="lg:col-span-5 bg-slate-950 border border-slate-800 rounded-2xl p-5 space-y-4">
+            <h3 class="text-sm font-bold text-white flex items-center gap-2 pb-3 border-b border-slate-800">
+              <i data-lucide="edit-3" class="w-4 h-4 text-emerald-400"></i>
+              <span>កែសម្រួលកំណត់បង្ហាញលិខិតចូល</span>
+            </h3>
+
+            <div class="space-y-3 text-xs">
+              <!-- Card 1: ស្ថាប័នម្ចាស់លិខិត & លេខលិខិត -->
+              <div class="p-3 bg-slate-900/80 border border-slate-800 rounded-xl space-y-2.5">
+                <div class="text-[11px] font-bold text-emerald-400 flex items-center gap-1.5">
+                  <i data-lucide="building" class="w-3.5 h-3.5"></i>
+                  <span>១. ស្ថាប័នម្ចាស់លិខិត & លេខលិខិត</span>
+                </div>
+                <div class="space-y-2">
+                  <div>
+                    <label class="block text-slate-400 mb-1 text-[11px]">ស្ថាប័ន / អង្គភាពយើង (Header ឆ្វេង)</label>
+                    <textarea id="rtMinistry" rows="3" spellcheck="false" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-1.5 text-slate-200 text-xs focus:outline-none focus:border-emerald-500 font-khmer leading-relaxed" oninput="updateRoutingPreview()">ក្រសួងមហាផ្ទៃ&#10;សាលាជាតិរដ្ឋបាលមូលដ្ឋាន&#10;នាយកដ្ឋានកិច្ចការទូទៅ</textarea>
+                  </div>
+                  <div>
+                    <label class="block text-slate-400 mb-1 text-[11px]">លេខលិខិត</label>
+                    <input type="text" id="rtNumber" spellcheck="false" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-1.5 text-slate-200 text-xs focus:outline-none focus:border-emerald-500 font-khmer" value="លេខ៖ ............ / ........" oninput="updateRoutingPreview()">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 2: ព័ត៌មានលិខិតចូល -->
+              <div class="p-3 bg-slate-900/80 border border-slate-800 rounded-xl space-y-2.5">
+                <div class="text-[11px] font-bold text-sky-400 flex items-center gap-1.5">
+                  <i data-lucide="file-input" class="w-3.5 h-3.5"></i>
+                  <span>២. ព័ត៌មានលិខិតចូល</span>
+                </div>
+                <div class="space-y-2">
+                  <div>
+                    <label class="block text-slate-400 mb-1 text-[11px]">ក្រសួង-ស្ថាប័នផ្ញើមក (From Institution)</label>
+                    <input type="text" id="rtInstitution" spellcheck="false" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-1.5 text-slate-200 text-xs focus:outline-none focus:border-emerald-500 font-khmer" value="ក្រសួងមហាផ្ទៃ" oninput="updateRoutingPreview()">
+                  </div>
+                  <div>
+                    <label class="block text-slate-400 mb-1 text-[11px]">កម្មវត្ថុ (Subject)</label>
+                    <textarea id="rtSubject" rows="2" spellcheck="false" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-1.5 text-slate-200 text-xs focus:outline-none focus:border-emerald-500 font-khmer leading-relaxed" oninput="updateRoutingPreview()">ស្នើសុំការពិនិត្យ និងសម្រេចលើរបាយការណ៍វឌ្ឍនភាពការងារ</textarea>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 3: ផ្នែកលិខិតជូន & ការិយាល័យរដ្ឋបាល -->
+              <div class="p-3 bg-slate-900/80 border border-slate-800 rounded-xl space-y-2.5">
+                <div class="text-[11px] font-bold text-indigo-400 flex items-center gap-1.5">
+                  <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                  <span>៣. ផ្នែកលិខិតជូន & ការិយាល័យរដ្ឋបាល</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <div>
+                    <label class="block text-slate-400 mb-1 text-[11px]">សូមគោរពជូន</label>
+                    <input type="text" id="rtSubmissionTo" spellcheck="false" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 text-xs focus:outline-none focus:border-emerald-500 font-khmer" value="សូមគោរពជូន លោកស្រីប្រធាននាយកដ្ឋាន" oninput="updateRoutingPreview()">
+                  </div>
+                  <div>
+                    <label class="block text-slate-400 mb-1 text-[11px]">ឯកសារភ្ជាប់</label>
+                    <input type="text" id="rtAttachment" spellcheck="false" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 text-xs focus:outline-none focus:border-emerald-500 font-khmer" value="(សូមគោរពជូនភ្ជាប់នូវឯកសារពាក់ព័ន្ធចំនួន     ច្បាប់)។" oninput="updateRoutingPreview()">
+                  </div>
+                  <div>
+                    <label class="block text-slate-400 mb-1 text-[11px]">កាលបរិច្ឆេទ</label>
+                    <input type="text" id="rtDate" spellcheck="false" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 text-xs focus:outline-none focus:border-emerald-500 font-khmer" value="រាជធានីភ្នំពេញ ថ្ងៃទី       ខែ          ឆ្នាំ២០២៦" oninput="updateRoutingPreview()">
+                  </div>
+                  <div>
+                    <label class="block text-slate-400 mb-1 text-[11px]">ហត្ថលេខីរដ្ឋបាល</label>
+                    <input type="text" id="rtSignerAdmin" spellcheck="false" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 text-xs focus:outline-none focus:border-emerald-500 font-khmer" value="ប្រធានការិយាល័យរដ្ឋបាល និងបុគ្គលិក" oninput="updateRoutingPreview()">
+                  </div>
+                </div>
+
+                <!-- Electronic Signature Insertion Control for Routing Slip -->
+                <div class="p-2.5 bg-slate-950 border border-slate-800 rounded-lg space-y-2 mt-2">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[11px] font-semibold text-emerald-400 flex items-center gap-1.5">
+                      <i data-lucide="pen-tool" class="w-3.5 h-3.5"></i>
+                      <span>ហត្ថលេខាអេឡិចត្រូនិច (E-Signature)</span>
+                    </span>
+                    <button type="button" id="btnRemoveRtSig" onclick="clearSignature('rt')" class="text-[10px] text-rose-400 hover:text-rose-300 hidden flex items-center gap-1 transition">
+                      <i data-lucide="trash-2" class="w-3 h-3"></i> លុបហត្ថលេខា
+                    </button>
+                  </div>
+                  
+                  <div class="flex items-center gap-2">
+                    <input type="file" id="fileRtSig" accept="image/png,image/jpeg,image/webp" class="hidden" onchange="handleSigUpload(event, 'rt')">
+                    <button type="button" onclick="document.getElementById('fileRtSig').click()" class="flex-1 py-1.5 px-3 bg-slate-900 hover:bg-slate-850 text-slate-200 border border-slate-800 rounded-lg text-xs flex items-center justify-center gap-1.5 transition">
+                      <i data-lucide="upload" class="w-3.5 h-3.5 text-emerald-400"></i>
+                      <span>បញ្ចូលរូបហត្ថលេខា (PNG / JPG)</span>
+                    </button>
+                    <button type="button" onclick="openSignaturePadModal('rt')" class="py-1.5 px-3 bg-slate-900 hover:bg-slate-850 text-slate-200 border border-slate-800 rounded-lg text-xs flex items-center justify-center gap-1.5 transition" title="គូរហត្ថលេខាដោយដៃផ្ទាល់">
+                      <i data-lucide="edit-3" class="w-3.5 h-3.5 text-sky-400"></i>
+                      <span>គូរដោយដៃ</span>
+                    </button>
+                  </div>
+
+                  <div id="rtSigPreviewThumb" class="hidden p-2 bg-slate-900 border border-emerald-500/30 rounded-lg flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                      <div class="bg-white p-1 rounded border border-slate-300">
+                        <img id="rtSigImgThumb" src="" alt="Signature" class="h-8 max-w-[120px] object-contain">
+                      </div>
+                      <span class="text-[10px] text-emerald-300 font-medium">បានបញ្ចូលហត្ថលេខារួចរាល់</span>
+                    </div>
+                    <span class="text-[10px] text-slate-400">នឹងបង្ហាញលើឯកសារ & Word</span>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Card 4: ប្រអប់យោបល់ថ្នាក់ដឹកនាំទាំង ៤ -->
+              <div class="p-3 bg-slate-900/80 border border-slate-800 rounded-xl space-y-3">
+                <div class="text-[11px] font-bold text-amber-400 flex items-center justify-between">
+                  <div class="flex items-center gap-1.5">
+                    <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>
+                    <span>៤. ប្រអប់យោបល់ថ្នាក់ដឹកនាំទាំង ៤</span>
+                  </div>
+                  <span class="text-[10px] text-slate-500 font-normal">តាមលំដាប់លំហូររដ្ឋបាល</span>
+                </div>
+
+                <!-- Box 1: Deputy Dept Head (Right Top) -->
+                <div class="p-2.5 bg-slate-950 border border-slate-800/80 rounded-lg space-y-1">
+                  <div class="flex items-center justify-between">
+                    <label class="block text-emerald-400 font-bold text-[11px]">១. យោបល់ អនុប្រធាននាយកដ្ឋាន</label>
+                    <span class="text-[10px] text-slate-500">ស្តាំលើ</span>
+                  </div>
+                  <textarea id="rtBoxDeputyDept" rows="2" spellcheck="false" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 text-xs focus:outline-none focus:border-emerald-500 font-khmer" oninput="updateRoutingPreview()">.....គោរពជូន..................................................................&#10;...................................................................................</textarea>
+                </div>
+
+                <!-- Box 2: Dept Head (Right Bottom) -->
+                <div class="p-2.5 bg-slate-950 border border-slate-800/80 rounded-lg space-y-1">
+                  <div class="flex items-center justify-between">
+                    <label class="block text-emerald-400 font-bold text-[11px]">២. យោបល់ ប្រធាននាយកដ្ឋាន</label>
+                    <span class="text-[10px] text-slate-500">ស្តាំក្រោម</span>
+                  </div>
+                  <textarea id="rtBoxDeptHead" rows="2" spellcheck="false" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 text-xs focus:outline-none focus:border-emerald-500 font-khmer" oninput="updateRoutingPreview()">សូមគោរពជូន ឯកឧត្តមនាយករងសាលា&#10;ដើម្បីជូន................................................................&#10;..........................................................................។</textarea>
+                </div>
+
+                <!-- Box 3: Deputy School Director (Left Top) -->
+                <div class="p-2.5 bg-slate-950 border border-slate-800/80 rounded-lg space-y-1">
+                  <div class="flex items-center justify-between">
+                    <label class="block text-sky-400 font-bold text-[11px]">៣. យោបល់ ឯកឧត្តមនាយករងសាលា</label>
+                    <span class="text-[10px] text-slate-500">ឆ្វេងលើ</span>
+                  </div>
+                  <textarea id="rtBoxDeputyDirector" rows="2" spellcheck="false" placeholder="ទុកនៅទទេសម្រាប់សរសេរដៃ ឬវាយបញ្ចូលយោបល់..." class="w-full bg-slate-900 border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 text-xs focus:outline-none focus:border-emerald-500 font-khmer" oninput="updateRoutingPreview()"></textarea>
+                </div>
+
+                <!-- Box 4: School Director (Left Bottom) -->
+                <div class="p-2.5 bg-slate-950 border border-slate-800/80 rounded-lg space-y-1">
+                  <div class="flex items-center justify-between">
+                    <label class="block text-sky-400 font-bold text-[11px]">៤. យោបល់ ឯកឧត្តមនាយកសាលា</label>
+                    <span class="text-[10px] text-slate-500">ឆ្វេងក្រោម</span>
+                  </div>
+                  <textarea id="rtBoxDirector" rows="2" spellcheck="false" placeholder="ទុកនៅទទេសម្រាប់សរសេរដៃ ឬវាយបញ្ចូលចំណារឯកភាព..." class="w-full bg-slate-900 border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 text-xs focus:outline-none focus:border-emerald-500 font-khmer" oninput="updateRoutingPreview()"></textarea>
+                </div>
+              </div>
+
+              <button onclick="aiRefineRouting()" class="w-full mt-2 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white rounded-lg font-medium text-xs flex items-center justify-center gap-2 transition shadow">
+                <i data-lucide="wand-2" class="w-3.5 h-3.5"></i>
+                <span>កែសម្រួលកំណត់បង្ហាញលិខិតចូលដោយស្វ័យប្រវត្តតាម AI</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Right: Official A4 Live Preview -->
+          <div class="lg:col-span-7 flex justify-center bg-slate-950 border border-slate-800 rounded-2xl p-4 sm:p-6 overflow-x-auto">
+            <div id="printAreaRouting" class="a4-paper w-full max-w-[21cm]">
+              
+              <!-- Official Header Table -->
+              <table class="w-full mb-4">
+                <tr>
+                  <td class="w-1/2 align-top text-left">
+                    <div id="pvRtMinistry" class="font-muol text-xs leading-relaxed text-slate-900">ក្រសួងមហាផ្ទៃ<br>សាលាជាតិរដ្ឋបាលមូលដ្ឋាន<br>នាយកដ្ឋានកិច្ចការទូទៅ</div>
+                    <div id="pvRtNumber" class="text-xs text-slate-700 mt-1">លេខ៖ ............ / ........</div>
+                  </td>
+                  <td class="w-1/2 align-top text-center">
+                    <div class="font-muol text-sm text-slate-900">ព្រះរាជាណាចក្រកម្ពុជា</div>
+                    <div class="font-muol text-xs text-slate-900 mt-0.5">ជាតិ សាសនា ព្រះមហាក្សត្រ</div>
+                    <div class="text-xs text-slate-700 mt-[-2px]">~~~ 🙡 🙣 ~~~</div>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Main Title -->
+              <div class="text-center my-4">
+                <h2 class="font-muol text-lg text-slate-900 tracking-wider">កំណត់បង្ហាញលិខិតចូល</h2>
+              </div>
+
+              <!-- Metadata Table (Fixed width label prevents wrapping) -->
+              <table class="w-full mb-3 text-xs leading-relaxed text-slate-900" style="table-layout: fixed;">
+                <tr>
+                  <td class="align-top py-1 text-slate-900 font-bold whitespace-nowrap" style="width: 140px; min-width: 140px;">ក្រសួង-ស្ថាប័ន៖</td>
+                  <td id="pvRtInstitution" class="align-top py-1 text-slate-800 break-words font-medium font-khmer">ក្រសួងមហាផ្ទៃ</td>
+                </tr>
+                <tr>
+                  <td class="align-top py-1 text-slate-900 font-bold whitespace-nowrap" style="width: 140px; min-width: 140px;">កម្មវត្ថុ៖</td>
+                  <td id="pvRtSubject" class="align-top py-1 text-slate-800 text-justify break-words leading-relaxed font-khmer">ស្នើសុំការពិនិត្យ និងសម្រេចលើរបាយការណ៍វឌ្ឍនភាពការងារ</td>
+                </tr>
+              </table>
+
+              <!-- Submission Block Table -->
+              <table class="w-full mb-4 text-xs" style="table-layout: fixed;">
+                <tr>
+                  <td class="w-1/2 align-top pr-2">
+                    <div id="pvRtSubmissionTo" class="font-bold text-slate-900 text-xs font-khmer">សូមគោរពជូន លោកស្រីប្រធាននាយកដ្ឋាន</div>
+                    <div id="pvRtAttachment" class="text-slate-800 text-xs mt-1 font-khmer">(សូមគោរពជូនភ្ជាប់នូវឯកសារពាក់ព័ន្ធចំនួន     ច្បាប់)។</div>
+                  </td>
+                  <td class="w-1/2 align-top text-center pl-2">
+                    <div id="pvRtDate" class="text-slate-800 text-xs font-khmer">រាជធានីភ្នំពេញ ថ្ងៃទី       ខែ          ឆ្នាំ២០២៦</div>
+                    <div id="pvRtSignerAdmin" class="font-muol text-slate-900 text-xs mt-1 font-khmer">ប្រធានការិយាល័យរដ្ឋបាល និងបុគ្គលិក</div>
+                    <!-- Electronic Signature Container -->
+                    <div class="min-h-[50px] flex items-center justify-center my-1">
+                      <img id="pvRtAdminSignatureImg" src="" alt="ហត្ថលេខា" class="max-h-12 max-w-[150px] object-contain hidden">
+                    </div>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- The 2x2 Routing Boxes Grid (Official Border Box Table) -->
+              <table class="w-full border-collapse border border-slate-950 text-xs" style="table-layout: fixed;">
+                <!-- Row 1: Deputy Director (Left) & Deputy Dept (Right) -->
+                <tr>
+                  <td class="w-1/2 border border-slate-950 p-3 align-top" style="height: 190px; vertical-align: top;">
+                    <div class="font-muol text-center underline text-slate-900 text-xs mb-2">យោបល់ ឯកឧត្តមនាយករងសាលា</div>
+                    <div id="pvRtBoxDeputyDirector" class="whitespace-pre-line text-slate-800 min-h-[90px] leading-relaxed break-words font-khmer"></div>
+                  </td>
+                  <td class="w-1/2 border border-slate-950 p-3 align-top" style="height: 190px; vertical-align: top;">
+                    <div class="font-muol text-center underline text-slate-900 text-xs mb-2">យោបល់ អនុប្រធាននាយកដ្ឋាន</div>
+                    <div id="pvRtBoxDeputyDept" class="whitespace-pre-line text-slate-800 leading-relaxed break-words font-khmer">.....គោរពជូន..................................................................&#10;...................................................................................</div>
+                    <div class="text-right mt-4 text-[11px]">
+                      <div>ដោយសេចក្តីគោរពដ៏ខ្ពង់ខ្ពស់!</div>
+                      <div class="font-muol text-xs mt-4">អនុប្រធាននាយកដ្ឋានទទួលបន្ទុក</div>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Row 2: School Director (Left) & Dept Director (Right) -->
+                <tr>
+                  <td class="w-1/2 border border-slate-950 p-3 align-top" style="height: 190px; vertical-align: top;">
+                    <div class="font-muol text-center underline text-slate-900 text-xs mb-2">យោបល់ ឯកឧត្តមនាយកសាលា</div>
+                    <div id="pvRtBoxDirector" class="whitespace-pre-line text-slate-800 min-h-[90px] leading-relaxed break-words font-khmer"></div>
+                  </td>
+                  <td class="w-1/2 border border-slate-950 p-3 align-top" style="height: 190px; vertical-align: top;">
+                    <div class="font-muol text-center underline text-slate-900 text-xs mb-2">យោបល់ ប្រធាននាយកដ្ឋាន</div>
+                    <div id="pvRtBoxDeptHead" class="whitespace-pre-line text-slate-800 leading-relaxed break-words font-khmer">សូមគោរពជូន ឯកឧត្តមនាយករងសាលា&#10;ដើម្បីជូន................................................................&#10;..........................................................................។</div>
+                    <div class="text-right mt-4 text-[11px]">
+                      <div>ដោយសេចក្តីគោរពដ៏ខ្ពង់ខ្ពស់!</div>
+                      <div class="font-muol text-xs mt-4">ប្រធាននាយកដ្ឋាន</div>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- TAB 4: ការកំណត់ & ឧបករណ៍ជំនួយ (SETTINGS)   -->
+    <!-- ========================================== -->
+    <section id="pane-settings" class="space-y-6 hidden max-w-4xl mx-auto">
+      
+      <!-- Primary Card: Telegram បុគ្គល (Personal Telegram) - Zero Bot Token Required -->
+      <div class="bg-slate-950 border border-sky-500/30 rounded-2xl p-6 sm:p-8 shadow-xl space-y-5 relative overflow-hidden">
+        <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-sky-500/5 rounded-full blur-2xl pointer-events-none"></div>
+
+        <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-500/30 text-sky-400 flex items-center justify-center">
+              <i data-lucide="send" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-sky-500/20 text-sky-300 text-[11px] font-semibold mb-1">
+                ⭐ ណែនាំខ្ពស់ • មិនបាច់ប្រើ Bot Token ទេ
+              </div>
+              <h3 class="text-base font-bold text-white">ការផ្ញើទៅ Telegram បុគ្គល (Personal Telegram)</h3>
+              <p class="text-xs text-slate-400">ផ្ញើឯកសារសម្លេង អត្ថបទ និងកំណត់ហេតុទៅ Telegram ផ្ទាល់ខ្លួនរបស់អ្នក ឬសហការីដោយចុចតែម្តង</p>
+            </div>
+          </div>
+          <button onclick="testOpenPersonalTelegram()" class="px-4 py-2 bg-sky-600 hover:bg-sky-500 text-white rounded-lg text-xs font-semibold flex items-center gap-1.5 transition shadow-lg shadow-sky-600/20">
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            <span>បើកសាកល្បង Telegram</span>
+          </button>
+        </div>
+
+        <div class="space-y-3 text-xs">
+          <div>
+            <label class="block text-slate-200 font-medium mb-1.5">គណនី Telegram ផ្ទាល់ខ្លួន (Username ឬទុកនៅទទេដើម្បីជ្រើសរើសពេលផ្ញើ)៖</label>
+            <div class="relative">
+              <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 font-mono text-sm">@</span>
+              <input type="text" id="cfgPersonalUsername" placeholder="ឧទាហរណ៍៖ username របស់អ្នក ឬទុកនៅទទេ" class="w-full bg-slate-900 border border-slate-800 rounded-lg pl-8 pr-3.5 py-2.5 text-slate-200 focus:outline-none focus:border-sky-500 font-mono">
+            </div>
+            <p class="text-slate-400 text-[11px] mt-1.5 leading-relaxed">
+              💡 <strong>ងាយស្រួលបំផុត៖</strong> ប្រសិនបើលោកអ្នកទុកនៅទទេ ពេលចុចផ្ញើ កម្មវិធី Telegram Desktop នឹងបើកបញ្ជីទំនាក់ទំនងរបស់អ្នកឡើងមកភ្លាមៗ ដោយលោកអ្នកគ្រាន់តែចុចលើ <strong>Saved Messages (សារផ្ទាល់ខ្លួន)</strong> ឬឈ្មោះមិត្តរួមការងារជាការស្រេច!
+            </p>
+          </div>
+
+          <div class="pt-2">
+            <label class="flex items-center gap-2 cursor-pointer select-none">
+              <input type="checkbox" id="cfgAutoPersonalTelegram" checked class="w-4 h-4 rounded text-sky-500 focus:ring-sky-500 bg-slate-900 border-slate-700">
+              <span class="text-slate-300 font-medium">បើកផ្ញើទៅ Telegram បុគ្គលស្វ័យប្រវត្តរាល់ពេលថតចប់ (Auto-open Telegram upon recording completion)</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Advanced Card: Telegram Bot API (Optional / For Group Chat ID) -->
+      <details class="bg-slate-950/60 border border-slate-800 rounded-2xl p-6 text-xs transition">
+        <summary class="font-bold text-slate-300 cursor-pointer select-none flex items-center justify-between">
+          <span class="flex items-center gap-2">
+            <i data-lucide="bot" class="w-4 h-4 text-slate-400"></i>
+            <span>ការកំណត់កម្រិតខ្ពស់៖ Telegram Bot API (សម្រាប់ផ្ញើស្វ័យប្រវត្តក្នុង Background ចូល Group ID)</span>
+          </span>
+          <span class="text-slate-500 text-[11px] font-normal">ចុចបើក/បិទ</span>
+        </summary>
+
+        <div class="mt-4 pt-4 border-t border-slate-800 space-y-4">
+          <p class="text-slate-400 leading-relaxed text-[11px]">
+            ប្រសិនបើលោកអ្នកចង់ឱ្យ Server ផ្ញើឯកសារដោយស្វ័យប្រវត្តក្នុង background ចូលទៅក្នុង Group ID <code class="text-sky-400 font-mono">-724483977</code> ដោយមិនបាច់បើក Telegram Desktop ទេនោះ លោកអ្នកគ្រាន់តែបង្កើត Bot មួយលើ Telegram <a href="https://t.me/BotFather" target="_blank" class="text-sky-400 underline">@BotFather</a> រួចយក Bot Token មកបំពេញខាងក្រោមនេះ៖
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-slate-400 mb-1">Telegram Bot Token</label>
+              <input type="text" id="cfgTelegramToken" placeholder="7123456789:AAH..." class="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:border-sky-500 font-mono">
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1">Telegram Chat ID ឬ Group ID</label>
+              <input type="text" id="cfgTelegramChatId" value="-724483977" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:border-sky-500 font-mono">
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between pt-2">
+            <label class="flex items-center gap-2">
+              <input type="checkbox" id="cfgAutoBotTelegram" class="w-4 h-4 rounded text-sky-500 bg-slate-900 border-slate-700">
+              <span class="text-slate-400">បើកការផ្ញើតាម Bot ស្វ័យប្រវត្ត</span>
+            </label>
+            <button onclick="testBotTelegramConnection()" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg border border-slate-700 transition">
+              សាកល្បង Bot Connection
+            </button>
+          </div>
+        </div>
+      </details>
+
+      <!-- Google Gemini AI Key (Optional) Card -->
+      <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-xl space-y-4">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-800 flex-wrap gap-3">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center">
+              <i data-lucide="sparkles" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <h3 class="text-base font-bold text-white">Google Gemini AI API Key (ស្រេចចិត្ត / ឥតគិតថ្លៃ ១០០%)</h3>
+              <p class="text-xs text-slate-400">ជួយឱ្យការបម្លែងអក្សរខ្មែរ ឈ្មោះបុគ្គល តួនាទី និងទម្រង់កំណត់ហេតុរដ្ឋបាលត្រឹមត្រូវ ៩៩.៩%</p>
+            </div>
+          </div>
+          <button type="button" onclick="testGeminiConnection()" class="px-3.5 py-1.5 bg-purple-600/20 hover:bg-purple-600/30 text-purple-300 border border-purple-500/30 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition">
+            <i data-lucide="check-circle" class="w-3.5 h-3.5"></i>
+            <span>សាកល្បង (Test)</span>
+          </button>
+        </div>
+
+        <div class="text-xs space-y-2">
+          <label class="block text-slate-300 font-medium">Gemini API Key</label>
+          <div class="flex gap-2">
+            <input type="password" id="cfgGeminiKey" placeholder="AIzaSy..." class="flex-1 bg-slate-900 border border-slate-800 rounded-lg px-3.5 py-2.5 text-slate-200 focus:outline-none focus:border-purple-500 font-mono">
+          </div>
+          <div class="flex flex-wrap items-center justify-between gap-2 text-slate-400 text-[11px] pt-1">
+            <span>✨ អាចបង្កើតយក Key ដោយឥតគិតថ្លៃ (Free) នៅ៖ <a href="https://aistudio.google.com/app/apikey" target="_blank" class="text-purple-400 font-mono underline hover:text-purple-300">https://aistudio.google.com/app/apikey</a></span>
+            <span class="text-emerald-400">✓ ប្រព័ន្ធមាន Linguistic Cleaner ស្រាប់ បើទោះជាគ្មាន API Key ក៏ដោយ</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Save Config Button -->
+      <div class="flex justify-end">
+        <button onclick="saveAppSettings()" class="px-6 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-semibold shadow-lg shadow-emerald-600/30 flex items-center gap-2 transition">
+          <i data-lucide="save" class="w-4 h-4"></i>
+          <span>រក្សាទុកការកំណត់ទាំងអស់ (Save Settings)</span>
+        </button>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Share & QR Code Modal -->
+  <div id="shareModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full p-6 space-y-5 shadow-2xl relative">
+      <button onclick="closeShareModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
+          <i data-lucide="qr-code" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <h3 class="font-bold text-white text-base flex items-center gap-2">
+            <span>Voice-V5-Vat1anak68</span>
+            <span class="text-[10px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-1.5 py-0.5 rounded font-mono">HTTPS</span>
+          </h3>
+          <p class="text-xs text-slate-400">តំណភ្ជាប់ និង QR Code សម្រាប់ទូរស័ព្ទ & កុំព្យូទ័រ</p>
+        </div>
+      </div>
+
+      <!-- Tab Switcher: Cloudflare Tunnel HTTPS vs Local Wi-Fi -->
+      <div class="flex items-center gap-2 bg-slate-950 p-1 rounded-xl border border-slate-800">
+        <button id="tabShareTunnel" onclick="switchShareType('tunnel')" class="flex-1 py-2 px-3 rounded-lg text-xs font-semibold bg-emerald-600 text-white shadow transition flex items-center justify-center gap-1.5">
+          <i data-lucide="globe" class="w-3.5 h-3.5"></i>
+          <span>🌐 HTTPS Cloudflare</span>
+        </button>
+        <button id="tabShareWifi" onclick="switchShareType('wifi')" class="flex-1 py-2 px-3 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:text-white transition flex items-center justify-center gap-1.5">
+          <i data-lucide="wifi" class="w-3.5 h-3.5"></i>
+          <span>📶 Wi-Fi ក្នុងផ្ទះ</span>
+        </button>
+      </div>
+
+      <!-- Guaranteed Offline QR Code Container -->
+      <div class="flex justify-center p-4 bg-white rounded-xl shadow-inner min-h-[200px] items-center">
+        <div id="qrCodeContainer" class="flex justify-center items-center"></div>
+      </div>
+
+      <div class="space-y-2 text-xs">
+        <label id="shareUrlLabel" class="block text-slate-400">តំណភ្ជាប់ (Link) សម្រាប់ចុចចូលប្រើ៖</label>
+        <div class="flex items-center gap-2">
+          <input type="text" id="shareUrlInput" readonly class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-emerald-400 font-mono text-xs select-all">
+          <button onclick="copyShareUrl()" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg border border-slate-700 transition" title="ចម្លងតំណភ្ជាប់">
+            <i data-lucide="copy" class="w-4 h-4"></i>
+          </button>
+          <button onclick="openCurrentShareUrl()" class="px-3 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg transition" title="បើក Link នេះ">
+            <i data-lucide="external-link" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="text-[11px] text-slate-300 bg-slate-950/80 p-3.5 rounded-xl border border-slate-800 space-y-1.5">
+        <div class="font-semibold text-emerald-400 flex items-center gap-1.5">
+          <i data-lucide="smartphone" class="w-3.5 h-3.5"></i>
+          <span>របៀបប្រើ Voice-V5-Vat1anak68 លើទូរស័ព្ទដៃ៖</span>
+        </div>
+        <p class="text-slate-400 leading-relaxed">
+          ១. ស្កេន QR Code ខាងលើដើម្បីបើកកម្មវិធីលើទូរស័ព្ទ (មាន HTTPS អនុញ្ញាត Microphone ១០០%)<br>
+          ២. ចុចសញ្ញាចុច ៣ (Menu លើ Chrome) ជ្រើសរើស <strong>«Add to Home screen (បន្ថែមទៅអេក្រង់ដើម)»</strong><br>
+          ៣. ដាក់ឈ្មោះ <strong>Voice-V5-Vat1anak68</strong> នោះលោកអ្នកនឹងមាន App លើទូរស័ព្ទចុចចូលប្រើបានគ្រប់ពេល!
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Signature Pad Modal for Drawing E-Signature -->
+  <div id="sigPadModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-2xl relative">
+      <button onclick="closeSignaturePadModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
+          <i data-lucide="edit-3" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <h3 class="font-bold text-white text-base">គូរហត្ថលេខាអេឡិចត្រូនិច (Draw Signature)</h3>
+          <p class="text-xs text-slate-400">គូរហត្ថលេខារបស់លោកអ្នកដោយប្រើ Mouse ឬ Touch លើផ្ទាំងខាងក្រោម</p>
+        </div>
+      </div>
+
+      <div class="border-2 border-dashed border-slate-700 bg-white rounded-xl p-1 flex justify-center items-center shadow-inner overflow-hidden">
+        <canvas id="sigCanvas" width="460" height="180" class="cursor-crosshair touch-none w-full bg-white rounded-lg"></canvas>
+      </div>
+
+      <div class="flex items-center justify-between pt-2">
+        <button type="button" onclick="clearSigCanvas()" class="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-rose-300 rounded-xl text-xs font-medium flex items-center gap-1.5 transition">
+          <i data-lucide="trash-2" class="w-4 h-4"></i>
+          <span>លុបគូរឡើងវិញ (Clear)</span>
+        </button>
+
+        <div class="flex items-center gap-2">
+          <button type="button" onclick="closeSignaturePadModal()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-medium transition">
+            បោះបង់ (Cancel)
+          </button>
+          <button type="button" onclick="saveSignatureFromPad()" class="px-5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-semibold shadow-lg transition flex items-center gap-1.5">
+            <i data-lucide="check" class="w-4 h-4"></i>
+            <span>រក្សាទុកហត្ថលេខា</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Audio Player Modal / Sticky Bar -->
+  <div id="playerBar" class="fixed bottom-0 left-0 right-0 bg-slate-950/95 backdrop-blur-md border-t border-slate-800 p-3 z-40 hidden shadow-2xl">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="flex items-center gap-3 w-full sm:w-1/3">
+        <div class="w-9 h-9 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+          <i data-lucide="volume-2" class="w-5 h-5"></i>
+        </div>
+        <div class="truncate">
+          <div id="playerTitle" class="text-xs font-bold text-white truncate">កំពុងចាក់...</div>
+          <div id="playerTime" class="text-[11px] font-mono text-slate-400">00:00 / 00:00</div>
+        </div>
+      </div>
+
+      <!-- Audio Controls & Seek Slider -->
+      <div class="flex flex-col items-center w-full sm:w-1/2 gap-1">
+        <div class="flex items-center gap-3">
+          <button onclick="seekPlayer(-5)" title="ថយក្រោយ 5 វិនាទី" class="text-slate-400 hover:text-white p-1">
+            <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+          </button>
+          <button id="playerPlayBtn" onclick="togglePlayPauseAudio()" class="w-8 h-8 rounded-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 flex items-center justify-center shadow">
+            <i data-lucide="play" class="w-4 h-4 fill-slate-950 ml-0.5"></i>
+          </button>
+          <button onclick="seekPlayer(5)" title="ទៅមុខ 5 វិនាទី" class="text-slate-400 hover:text-white p-1">
+            <i data-lucide="rotate-cw" class="w-4 h-4"></i>
+          </button>
+          <select id="playerSpeedSelect" onchange="changePlaybackSpeed(this.value)" class="bg-slate-900 border border-slate-800 rounded px-1.5 py-0.5 text-[11px] text-slate-300">
+            <option value="0.75">0.75x</option>
+            <option value="1" selected>1.0x</option>
+            <option value="1.25">1.25x</option>
+            <option value="1.5">1.5x</option>
+            <option value="2">2.0x</option>
+          </select>
+        </div>
+        <input type="range" id="playerSeekSlider" min="0" max="100" value="0" class="w-full h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-500" oninput="onSeekSliderChange(this.value)">
+      </div>
+
+      <div class="flex items-center gap-2 justify-end w-full sm:w-1/4">
+        <button onclick="closePlayer()" class="text-slate-400 hover:text-white p-1">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="fixed top-20 right-5 z-50 space-y-2 pointer-events-none"></div>
+
+  <!-- Main JavaScript App Logic -->
+  <script src="/app.js?v=20261103_07"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

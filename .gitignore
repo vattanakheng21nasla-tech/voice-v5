@@ -1,0 +1,8 @@
+node_modules/
+cloudflared.exe
+.env
+data/active_url.txt
+.system_generated/
+*.log
+
+.vercel

@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: voice-v5-pro
+    env: node
+    plan: free
+    region: singapore
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000

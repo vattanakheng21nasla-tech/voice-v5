@@ -1,0 +1,9 @@
+{
+  "telegramBotToken": "",
+  "telegramChatId": "-724483977",
+  "personalTelegramUsername": "",
+  "autoSendTelegram": false,
+  "geminiApiKey": "",
+  "defaultLanguage": "km-KH",
+  "targetLanguage": "en"
+}

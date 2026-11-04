@@ -1,0 +1,24 @@
+{
+  "name": "Voice-V5 Pro - Smart Voice Recorder",
+  "short_name": "Voice-V5",
+  "description": "ប្រព័ន្ធថតសម្លេងវៃឆ្លាត • Live Translation • កំណត់ហេតុរដ្ឋបាល",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#090d16",
+  "theme_color": "#059669",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
