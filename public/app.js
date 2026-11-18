@@ -167,10 +167,14 @@ async function startRecording() {
       } catch (e) {}
     }
 
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     const mobileInput = document.getElementById('mobileAudioCapture');
-    if (mobileInput) {
+    if (isMobile && mobileInput) {
       showToast('កំពុងបើក Microphone លើទូរស័ព្ទរបស់អ្នក...', 'info');
       mobileInput.click();
+      return;
+    } else {
+      showToast('⚠️ Browser មិនអនុញ្ញាត Microphone លើតំណភ្ជាប់នេះទេ។ សូមប្រើ HTTPS ឬបើកសិទ្ធិ Mic!', 'error', 6000);
       return;
     }
   }
@@ -284,12 +288,19 @@ async function startRecording() {
 
   } catch (err) {
     console.warn('Microphone error:', err);
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     const mobileInput = document.getElementById('mobileAudioCapture');
-    if (mobileInput) {
+    if (isMobile && mobileInput) {
       showToast('កំពុងបើក Microphone លើទូរស័ព្ទ...', 'info');
       mobileInput.click();
     } else {
-      showToast('មិនអាចបើក Microphone៖ ' + err.message, 'error');
+      if (err.name === 'NotAllowedError' || err.name === 'PermissionDeniedError') {
+        showToast('⚠️ សូមចុចលើរូប 🔒 (សោរ) នៅខាងឆ្វេង Link ក្នុង Chrome ដើម្បីជ្រើសយក «Allow Microphone»!', 'error', 8000);
+      } else if (err.name === 'NotFoundError' || err.name === 'DevicesNotFoundError') {
+        showToast('⚠️ រកមិនឃើញ Microphone លើកុំព្យូទ័រនេះទេ សូមដោត ឬបើក Mic!', 'error', 6000);
+      } else {
+        showToast('មិនអាចបើក Microphone៖ ' + err.message, 'error', 6000);
+      }
     }
   }
 }
@@ -871,7 +882,11 @@ async function transcribeLatestRecording(recId) {
       }
       await loadRecordings();
     } else {
-      showToast(transData.error || 'បរាជ័យក្នុងការបម្លែងសម្លេង', 'error');
+      if (transData.error && (transData.error.includes('API key not valid') || transData.error.includes('API Key') || transData.error.includes('UNAUTHENTICATED'))) {
+        showToast('⚠️ Gemini API Key មិនត្រឹមត្រូវ។ សូមចូលផ្ទាំង «ការកំណត់» រួចដាក់ Key ពី Google AI Studio (ផ្តើមដោយ AIzaSy...)', 'error', 9000);
+      } else {
+        showToast(transData.error || 'បរាជ័យក្នុងការបម្លែងសម្លេង', 'error');
+      }
     }
   } catch (err) {
     showToast('កំហុស៖ ' + err.message, 'error');
@@ -943,6 +958,11 @@ async function saveRecordingToServer() {
             }
           } else if (transData.error) {
             console.warn('AI Transcribe info:', transData.error);
+            if (transData.error.includes('API key not valid') || transData.error.includes('API Key') || transData.error.includes('UNAUTHENTICATED')) {
+              showToast('⚠️ Gemini API Key មិនត្រឹមត្រូវ។ សូមចូលផ្ទាំង «ការកំណត់» រួចដាក់ Key ពី Google AI Studio (ផ្តើមដោយ AIzaSy...)', 'error', 9000);
+            } else {
+              showToast(transData.error, 'error');
+            }
           }
         } catch (e) {
           console.warn('AI Transcribe call failed:', e);
