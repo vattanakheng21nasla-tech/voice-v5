@@ -473,7 +473,7 @@ function cleanKhmerTranscriptOffline(rawText) {
 
 // Reliable Gemini API caller with automatic model fallback
 async function callGeminiApi(apiKey, method, payload) {
-  const models = ['gemini-2.5-flash', 'gemini-1.5-flash', 'gemini-flash-latest'];
+  const models = ['gemini-3.5-flash', 'gemini-flash-latest', 'gemini-3.8-flash', 'gemini-2.5-flash'];
   let lastError = null;
   for (const m of models) {
     try {
